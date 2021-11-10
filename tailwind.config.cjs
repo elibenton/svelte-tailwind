@@ -8,7 +8,7 @@ const config = {
 				sans: ['Mier B', 'sans-serif']
 			},
 			colors: {
-				beige: '#e5e5e5'
+				beige: '#fff8ef'
 			}
 		}
 	},

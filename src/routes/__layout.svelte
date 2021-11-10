@@ -1,7 +1,8 @@
 <script>
+	'@hmr:keep-all';
 	import { fade } from 'svelte/transition';
 	import '../app.css';
-	let dark = true;
+	let dark = false;
 </script>
 
 <div class:dark>
@@ -19,14 +20,14 @@
 							dark = !dark;
 						}}
 					>
-						{#if dark}
+						{#if !dark}
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
-								class="h-6 w-6"
-								fill="none"
+								class="h-7 w-7"
+								fill="currentColor"
 								viewBox="0 0 24 24"
 								stroke="currentColor"
-								in:fade={{ duration: 200 }}
+								in:fade={{ duration: 150 }}
 							>
 								<path
 									strokeLinecap="round"
@@ -38,11 +39,11 @@
 						{:else}
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
-								class="h-6 w-6"
-								fill="none"
+								class="h-7 w-7"
+								fill="currentColor"
 								viewBox="0 0 24 24"
 								stroke="currentColor"
-								in:fade={{ duration: 200 }}
+								in:fade={{ duration: 150 }}
 							>
 								<path
 									stroke-linecap="round"
