@@ -26,7 +26,7 @@
 
 @font-face {
 	font-family: 'Mier B';
-	src: url('MierB-Light.woff') format('woff');
+	src: url('/fonts/MierB-Light.woff') format('woff');
 	font-weight: 300;
 	font-style: normal;
 	font-display: swap;
@@ -34,7 +34,7 @@
 
 @font-face {
 	font-family: 'Mier B';
-	src: url('MierB-Regular.woff') format('woff');
+	src: url('/fonts/MierB-Regular.woff') format('woff');
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
@@ -42,7 +42,7 @@
 
 @font-face {
 	font-family: 'Mier B';
-	src: url('MierB-Italic.woff') format('woff');
+	src: url('/fonts/MierB-Italic.woff') format('woff');
 	font-weight: 400;
 	font-style: italic;
 	font-display: swap;
@@ -50,7 +50,7 @@
 
 @font-face {
 	font-family: 'Mier B';
-	src: url('MierB-LightItalic.woff') format('woff');
+	src: url('/fonts/MierB-LightItalic.woff') format('woff');
 	font-weight: 300;
 	font-style: italic;
 	font-display: swap;
@@ -58,7 +58,7 @@
 
 @font-face {
 	font-family: 'Mier B';
-	src: url('MierB-Demi.woff') format('woff');
+	src: url('/fonts/MierB-Demi.woff') format('woff');
 	font-weight: 600;
 	font-style: normal;
 	font-display: swap;
@@ -66,7 +66,7 @@
 
 @font-face {
 	font-family: 'Mier B';
-	src: url('MierB-ExtraBoldItalic.woff') format('woff');
+	src: url('/fonts/MierB-ExtraBoldItalic.woff') format('woff');
 	font-weight: 800;
 	font-style: italic;
 	font-display: swap;
@@ -74,7 +74,7 @@
 
 @font-face {
 	font-family: 'Mier B';
-	src: url('MierB-Bold.woff') format('woff');
+	src: url('/fonts/MierB-Bold.woff') format('woff');
 	font-weight: 700;
 	font-style: normal;
 	font-display: swap;
@@ -82,7 +82,7 @@
 
 @font-face {
 	font-family: 'Mier B';
-	src: url('MierB-ExtraBold.woff') format('woff');
+	src: url('/fonts/MierB-ExtraBold.woff') format('woff');
 	font-weight: 800;
 	font-style: normal;
 	font-display: swap;
@@ -90,7 +90,7 @@
 
 @font-face {
 	font-family: 'Mier B';
-	src: url('MierB-BoldItalic.woff') format('woff');
+	src: url('/fonts/MierB-BoldItalic.woff') format('woff');
 	font-weight: 700;
 	font-style: italic;
 	font-display: swap;
@@ -98,7 +98,7 @@
 
 @font-face {
 	font-family: 'Mier B';
-	src: url('MierB-Book.woff') format('woff');
+	src: url('/fonts/MierB-Book.woff') format('woff');
 	font-weight: 500;
 	font-style: normal;
 	font-display: swap;
@@ -106,7 +106,7 @@
 
 @font-face {
 	font-family: 'Mier B';
-	src: url('MierB-DemiItalic.woff') format('woff');
+	src: url('/fonts/MierB-DemiItalic.woff') format('woff');
 	font-weight: 600;
 	font-style: italic;
 	font-display: swap;
@@ -114,7 +114,7 @@
 
 @font-face {
 	font-family: 'Mier B';
-	src: url('MierB-BookItalic.woff') format('woff');
+	src: url('/fonts/MierB-BookItalic.woff') format('woff');
 	font-weight: 500;
 	font-style: italic;
 	font-display: swap;

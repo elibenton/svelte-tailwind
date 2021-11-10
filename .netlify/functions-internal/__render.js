@@ -4696,16 +4696,16 @@ var init_shims = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/__layout-3d998d96.js
-var layout_3d998d96_exports = {};
-__export(layout_3d998d96_exports, {
+// .svelte-kit/output/server/chunks/__layout-dd86fb26.js
+var layout_dd86fb26_exports = {};
+__export(layout_dd86fb26_exports, {
   default: () => _layout
 });
 var _layout;
-var init_layout_3d998d96 = __esm({
-  ".svelte-kit/output/server/chunks/__layout-3d998d96.js"() {
+var init_layout_dd86fb26 = __esm({
+  ".svelte-kit/output/server/chunks/__layout-dd86fb26.js"() {
     init_shims();
-    init_app_18d642f6();
+    init_app_dee94236();
     _layout = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       "@hmr:keep-all";
       return `<div${add_classes([""].join(" ").trim())}><div class="${"bg-beige dark:bg-gray-900"}"><main class="${"flex flex-col h-screen justify-between max-w-3xl px-4 sm:px-8 mx-auto pt-2 pb-8 dark:text-white"}"><section>${slots.default ? slots.default({}) : ``}</section>
@@ -4714,9 +4714,9 @@ var init_layout_3d998d96 = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/error-87f0a249.js
-var error_87f0a249_exports = {};
-__export(error_87f0a249_exports, {
+// .svelte-kit/output/server/chunks/error-4703fc66.js
+var error_4703fc66_exports = {};
+__export(error_4703fc66_exports, {
   default: () => Error2,
   load: () => load
 });
@@ -4724,10 +4724,10 @@ function load({ error: error2, status }) {
   return { props: { error: error2, status } };
 }
 var Error2;
-var init_error_87f0a249 = __esm({
-  ".svelte-kit/output/server/chunks/error-87f0a249.js"() {
+var init_error_4703fc66 = __esm({
+  ".svelte-kit/output/server/chunks/error-4703fc66.js"() {
     init_shims();
-    init_app_18d642f6();
+    init_app_dee94236();
     Error2 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       let { status } = $$props;
       let { error: error2 } = $$props;
@@ -4747,16 +4747,16 @@ ${error2.stack ? `<pre>${escape(error2.stack)}</pre>` : ``}`;
   }
 });
 
-// .svelte-kit/output/server/chunks/index-0aa67eac.js
-var index_0aa67eac_exports = {};
-__export(index_0aa67eac_exports, {
+// .svelte-kit/output/server/chunks/index-84fd297c.js
+var index_84fd297c_exports = {};
+__export(index_84fd297c_exports, {
   default: () => Routes
 });
 var Routes;
-var init_index_0aa67eac = __esm({
-  ".svelte-kit/output/server/chunks/index-0aa67eac.js"() {
+var init_index_84fd297c = __esm({
+  ".svelte-kit/output/server/chunks/index-84fd297c.js"() {
     init_shims();
-    init_app_18d642f6();
+    init_app_dee94236();
     Routes = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       return `<div class="${"my-8 md:my-24"}"><h1 class="${"text-3xl md:text-4xl xl:text-5xl pb-4 md:pb-8 font-medium"}">Eli Benton Cohen</h1>
 	<p class="${"text-xl md:text-3xl"}">I&#39;m a freelance journalist and radio producer. I am currently an associate producer at
@@ -4768,7 +4768,7 @@ var init_index_0aa67eac = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/app-18d642f6.js
+// .svelte-kit/output/server/chunks/app-dee94236.js
 function get_single_valued_header(headers, key) {
   const value = headers[key];
   if (Array.isArray(value)) {
@@ -6088,8 +6088,8 @@ function render(request, {
   return respond({ ...request, host }, options, { prerender });
 }
 var __accessCheck, __privateGet, __privateAdd, __privateSet, _map, chars, unsafeChars, reserved, escaped$1, objectProtoOwnPropertyNames, subscriber_queue, escape_json_string_in_html_dict, escape_html_attr_dict, s$1, s, absolute, ReadOnlyFormData, current_component, escaped, missing_component, on_destroy, css, Root, base, assets, user_hooks, template, options, default_settings, empty, manifest, get_hooks, module_lookup, metadata_lookup;
-var init_app_18d642f6 = __esm({
-  ".svelte-kit/output/server/chunks/app-18d642f6.js"() {
+var init_app_dee94236 = __esm({
+  ".svelte-kit/output/server/chunks/app-dee94236.js"() {
     init_shims();
     __accessCheck = (obj, member, msg) => {
       if (!member.has(obj))
@@ -6251,7 +6251,7 @@ ${``}`;
       __proto__: null,
       [Symbol.toStringTag]: "Module"
     });
-    template = ({ head, body }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="/favicon.png" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon.png" />\n		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />\n		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />\n		<link rel="manifest" href="/site.webmanifest" />\n		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />\n		<meta name="msapplication-TileColor" content="#da532c" />\n		<meta name="theme-color" content="#ffffff" />\n		' + head + '\n	</head>\n	<body>\n		<div id="svelte">' + body + "</div>\n	</body>\n</html>\n";
+    template = ({ head, body }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="/favicon/favicon.ico" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		<link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-touch-icon.png" />\n		<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />\n		<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />\n		<link rel="manifest" href="/favicon/site.webmanifest" />\n		<link rel="mask-icon" href="//faviconsafari-pinned-tab.svg" color="#5bbad5" />\n		<meta name="msapplication-TileColor" content="#da532c" />\n		<meta name="theme-color" content="#ffffff" />\n		' + head + '\n	</head>\n	<body>\n		<div id="svelte">' + body + "</div>\n	</body>\n</html>\n";
     options = null;
     default_settings = { paths: { "base": "", "assets": "" } };
     empty = () => ({});
@@ -6276,11 +6276,11 @@ ${``}`;
       externalFetch: hooks.externalFetch || fetch
     });
     module_lookup = {
-      "src/routes/__layout.svelte": () => Promise.resolve().then(() => (init_layout_3d998d96(), layout_3d998d96_exports)),
-      ".svelte-kit/build/components/error.svelte": () => Promise.resolve().then(() => (init_error_87f0a249(), error_87f0a249_exports)),
-      "src/routes/index.svelte": () => Promise.resolve().then(() => (init_index_0aa67eac(), index_0aa67eac_exports))
+      "src/routes/__layout.svelte": () => Promise.resolve().then(() => (init_layout_dd86fb26(), layout_dd86fb26_exports)),
+      ".svelte-kit/build/components/error.svelte": () => Promise.resolve().then(() => (init_error_4703fc66(), error_4703fc66_exports)),
+      "src/routes/index.svelte": () => Promise.resolve().then(() => (init_index_84fd297c(), index_84fd297c_exports))
     };
-    metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-3a226603.js", "css": ["assets/pages/__layout.svelte-47455184.css"], "js": ["pages/__layout.svelte-3a226603.js", "chunks/vendor-dfee42ab.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-a2d92e04.js", "css": [], "js": ["error.svelte-a2d92e04.js", "chunks/vendor-dfee42ab.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-7ce862d2.js", "css": [], "js": ["pages/index.svelte-7ce862d2.js", "chunks/vendor-dfee42ab.js"], "styles": [] } };
+    metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-3a226603.js", "css": ["assets/pages/__layout.svelte-d06ed4e9.css"], "js": ["pages/__layout.svelte-3a226603.js", "chunks/vendor-dfee42ab.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-a2d92e04.js", "css": [], "js": ["error.svelte-a2d92e04.js", "chunks/vendor-dfee42ab.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-7ce862d2.js", "css": [], "js": ["pages/index.svelte-7ce862d2.js", "chunks/vendor-dfee42ab.js"], "styles": [] } };
   }
 });
 
@@ -6292,7 +6292,7 @@ init_shims();
 
 // .svelte-kit/output/server/app.js
 init_shims();
-init_app_18d642f6();
+init_app_dee94236();
 
 // .svelte-kit/netlify/entry.js
 init();

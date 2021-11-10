@@ -1,5 +1,5 @@
 <div class="my-8 md:my-24">
-	<h1 class="text-3xl md:text-4xl xl:text-5xl pb-4 md:pb-8 font-medium">Eli Benton Cohen</h1>
+	<h1 class="text-3xl md:text-4xl xl:text-5xl pb-4 md:pb-8 font-bold">Eli Benton Cohen</h1>
 	<p class="text-xl md:text-3xl">
 		I'm a freelance journalist and radio producer. I am currently an associate producer at
 		<a
