@@ -1,0 +1,6 @@
+/* Write your global styles here, in PostCSS syntax */
+@import url('/static/fonts/stylesheet.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
