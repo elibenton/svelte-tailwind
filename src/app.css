@@ -12,7 +12,7 @@
 .expand:after {
 	display: block;
 	content: '';
-	border-bottom: solid 2px currentColor;
+	border-bottom: solid 1.5px currentColor;
 	transform: scaleX(0);
 	transition: transform 200ms ease-in-out;
 	transform-origin: 100% 50%;
