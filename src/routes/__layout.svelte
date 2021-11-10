@@ -8,7 +8,7 @@
 <div class:dark>
 	<div class="bg-beige dark:bg-gray-900">
 		<main
-			class="flex flex-col h-screen justify-between max-w-3xl px-8 mx-auto py-4 dark:text-white"
+			class="flex flex-col h-screen justify-between max-w-3xl px-6 mx-auto pt-2 pb-8 dark:text-white"
 		>
 			<section>
 				<slot />
