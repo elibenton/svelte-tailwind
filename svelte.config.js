@@ -1,17 +1,11 @@
 import preprocess from 'svelte-preprocess';
-import adapter from '@sveltejs/adapter-netlify';
+import netlify from '@sveltejs/adapter-netlify';
+import vercel from '@sveltejs/adapter-vercel';
 
 const config = {
 	kit: {
-		adapter: adapter(), // currently the adapter does not take any options
+		adapter: process.env.VERCEL ? vercel() : netlify(),
 		target: '#svelte'
-		// vite: {
-		// 	resolve: {
-		// 		alias: {
-		// 			$utils: path.resolve('./static/fonts')
-		// 		}
-		// 	}
-		// }
 	},
 	preprocess: [
 		preprocess({

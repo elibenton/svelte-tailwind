@@ -1,16 +1,19 @@
 {
 	"name": "svelte-tailwind",
 	"version": "0.0.1",
+	"private": true,
+	"type": "module",
 	"scripts": {
 		"dev": "svelte-kit dev",
-		"build": "svelte-kit build",
+		"build": "svelte-kit build --verbose",
 		"preview": "svelte-kit preview",
 		"lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
 		"format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-netlify": "^1.0.0-next.35",
-		"@sveltejs/adapter-static": "^1.0.0-next.21",
+		"@sveltejs/adapter-netlify": "next",
+		"@sveltejs/adapter-static": "next",
+		"@sveltejs/adapter-vercel": "next",
 		"@sveltejs/kit": "next",
 		"autoprefixer": "^10.3.7",
 		"cssnano": "^5.0.8",
@@ -26,9 +29,9 @@
 		"svelte-preprocess": "^4.9.8",
 		"tailwindcss": "^2.2.16"
 	},
-	"type": "module",
 	"dependencies": {
 		"@notionhq/client": "^0.4.6",
+		"cookie": "^0.4.1",
 		"d3-array": "^3.1.1",
 		"date-fns": "^2.25.0",
 		"title": "^3.4.3"
