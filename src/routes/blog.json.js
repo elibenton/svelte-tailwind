@@ -1,9 +1,9 @@
 import title from 'title';
 import { groups, rollups, sort } from 'd3-array';
-import { format } from 'date-fns';
+import { format, parse } from 'date-fns';
 
 export async function get() {
-	url = `https://api.notion.com/v1/databases/${import.meta.env.VITE_NOTION_LIST_ID}/query `;
+	url = `https://api.notion.com/v1/databases/${import.meta.env.VITE_NOTION_LIST_ID}/query`;
 
 	let response = await fetch(url, {
 		method: 'POST',
@@ -33,12 +33,12 @@ export async function get() {
 	let json = await response.json();
 
 	const responseClean = json.results.map(
-		({ properties: { Name, Author, Type, Link, Date, Added, Publisher, Summary } }) => ({
+		({ properties: { Name, Author, Type, Link, Created, Added, Publisher, Summary } }) => ({
 			name: title(Name.title[0].plain_text),
 			authors: Author.multi_select.map(({ name }) => name),
 			type: Type.select.name,
 			link: Link.url,
-			date: Date.date.start,
+			date: format(parse(Created.date.start, 'yyyy-MM-dd', new Date()), 'MMM dd, yyyy'),
 			added: Added.created_time,
 			publishers: Publisher.multi_select.map(({ name }) => name),
 			summary: Summary.rich_text.map((item) => item.plain_text)

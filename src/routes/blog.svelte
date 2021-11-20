@@ -20,19 +20,10 @@
 </script>
 
 <script>
+	import Months from '../components/Months.svelte';
 	export let posts;
 </script>
 
-<ul>
-	{#each Array.from(posts) as month}
-		<li class="font-semibold text-2xl pt-6 pb-2">{month[0]}</li>
-		{#each month[1] as { name, authors, type, link, date, added, publisher, summary }}
-			<div class="flex justify-between">
-				<a href={link}>{name}</a>
-				<p class="italic">
-					{#each authors as author, index}{author}{#if authors.length - 1 != index}&nbsp;&bullet;&nbsp;{/if}{/each}
-				</p>
-			</div>
-		{/each}
-	{/each}
+<ul class="sm:mt-6">
+	{#each Array.from(posts) as month}<Months {month} />{/each}
 </ul>

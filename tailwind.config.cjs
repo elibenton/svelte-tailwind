@@ -3,7 +3,7 @@ const plugin = require('tailwindcss/plugin');
 const config = {
 	mode: 'jit',
 	purge: ['./src/**/*.{html,js,svelte,ts}'],
-	darkMode: 'class',
+	darkMode: 'media',
 	theme: {
 		extend: {
 			fontFamily: {

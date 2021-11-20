@@ -14,8 +14,8 @@
 		> from Radiolab.
 	</p>
 </div>
-<!-- <ul class="flex flex-col sm:flex-row gap-x-3 text-sm">
+<ul class="flex flex-col sm:flex-row gap-x-3 text-sm">
 	<li><a href="/about">ABOUT</a></li>
 	<li><a href="/blog">BLOG</a></li>
 	<li><a href="/contact">CONTACT</a></li>
-</ul> -->
+</ul>
