@@ -1,31 +1,16 @@
 <script>
+	import * as api from '$lib/api';
+
 	import { cubicOut } from 'svelte/easing';
 	import { slide } from 'svelte/transition';
 	import { tweened } from 'svelte/motion';
 
-	export let name, authors, publishers, date, type, link;
+	export let name, authors, publishers, date, type, link, id, likes;
 	export let open = false;
 	export let liked = false;
 
-	async function updateLikes() {
-		await patch(`https://api.notion.com/v1/databases/${import.meta.env.VITE_NOTION_LIST_ID}`, {
-			headers: {
-				Authorization: `Bearer ${import.meta.env.VITE_NOTION_API_KEY}`,
-				'Notion-Version': '2021-08-16',
-				'Content-Type': 'application/json',
-				mode: 'no-cors'
-			},
-			body: JSON.stringify({
-				title: {
-					text: {
-						title: 'Media'
-					}
-				},
-				properties: {
-					Likes: 1
-				}
-			})
-		});
+	async function updateLikes(page_id) {
+		api.patch(`pages/${page_id}`, { properties: { Likes: { number: likes + 1 } } });
 	}
 </script>
 
@@ -56,11 +41,11 @@
 		</div>
 		<div class="flex gap-x-2 self-end">
 			<p>{type}&nbsp;&bullet;&nbsp;{date}</p>
-			<button on:click={updateLikes}>
+			<button on:click={updateLikes(id) && (() => (liked = !liked))}>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
-					class="h-5 w-5"
-					fill={liked ? `curentColor` : `none`}
+					class="h-5 w-5 dark:text-white"
+					fill={liked ? `currentColor` : `none`}
 					viewBox="0 0 24 24"
 					stroke="currentColor"
 				>
@@ -72,6 +57,7 @@
 					/>
 				</svg>
 			</button>
+			<p>{likes}</p>
 		</div>
 	</div>
 

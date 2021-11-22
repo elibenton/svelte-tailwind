@@ -1,17 +1,15 @@
 // const key = import.meta.env.VITE_NOTION_API_KEY;
 const base = 'https://api.notion.com/v1';
 
-async function send({ method, path, data, token }) {
+async function send({ method, path, data }) {
 	const opts = { method, headers: {} };
+
+	opts.headers['Authorization'] = `Bearer ${import.meta.env.VITE_NOTION_API_KEY}`;
+	opts.headers['Notion-Version'] = '2021-08-16';
 
 	if (data) {
 		opts.headers['Content-Type'] = 'application/json';
 		opts.body = JSON.stringify(data);
-	}
-
-	if (token) {
-		opts.headers['Authorization'] = `Bearer ${token}`;
-		opts.headers['Notion-Version'] = '2021-08-16';
 	}
 
 	return fetch(`${base}/${path}`, opts)
@@ -25,22 +23,22 @@ async function send({ method, path, data, token }) {
 		});
 }
 
-export function get(path, token) {
-	return send({ method: 'GET', path, token });
+export function get(path) {
+	return send({ method: 'GET', path });
 }
 
-export function del(path, token) {
-	return send({ method: 'DELETE', path, token });
+export function del(path) {
+	return send({ method: 'DELETE', path });
 }
 
-export function post(path, data, token) {
-	return send({ method: 'POST', path, data, token });
+export function post(path, data) {
+	return send({ method: 'POST', path, data });
 }
 
-export function put(path, data, token) {
-	return send({ method: 'PUT', path, data, token });
+export function put(path, data) {
+	return send({ method: 'PUT', path, data });
 }
 
-export function patch(path, data, token) {
-	return send({ method: 'PATCH', path, data, token });
+export function patch(path, data) {
+	return send({ method: 'PATCH', path, data });
 }
