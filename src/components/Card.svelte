@@ -3,11 +3,10 @@
 
 	import { cubicOut } from 'svelte/easing';
 	import { slide } from 'svelte/transition';
-	import { tweened } from 'svelte/motion';
 
-	export let name, authors, publishers, date, type, link, id, likes;
-	export let open = false;
-	export let liked = false;
+	export let name, authors, publishers, date, type, link, id, likes, summary, added;
+	let open = false;
+	let liked = false;
 
 	async function updateLikes(page_id) {
 		api.patch(`pages/${page_id}`, { properties: { Likes: { number: likes + 1 } } });

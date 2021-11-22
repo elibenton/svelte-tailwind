@@ -24,12 +24,17 @@
 <script>
 	import Section from '../components/Section.svelte';
 	import Tag from '../components/Tag.svelte';
+	import visible from '../store';
 	export let posts, tags;
+	let tag;
+
+	$: console.log($visible);
+	$: $visible.concat(tag);
 </script>
 
 <ul class="sm:mt-6 sm:flex gap-x-1 gap-y-2">
 	{#each Array.from(tags) as tag}
-		<Tag {tag} />
+		<Tag bind:tag />
 	{/each}
 </ul>
 
