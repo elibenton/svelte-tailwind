@@ -1,7 +1,6 @@
 import * as api from '$lib/api';
 
 import title from 'title';
-import { groups } from 'd3-array';
 import { format, parse } from 'date-fns';
 
 export async function get() {
@@ -43,7 +42,7 @@ export async function get() {
 
 	return {
 		body: {
-			posts: groups(responseClean, (d) => format(new Date(d.added), `MMMM yyyy`)),
+			posts: responseClean,
 			tags: [...new Set(results.map(({ properties }) => properties.Type.select.name))]
 		}
 	};

@@ -1,19 +1,20 @@
 <script>
 	import * as api from '$lib/api';
 
-	import { cubicOut } from 'svelte/easing';
-	import { slide } from 'svelte/transition';
+	import { cubicInOut, cubicOut } from 'svelte/easing';
+	import { slide, fade, fly } from 'svelte/transition';
 
 	export let name, authors, publishers, date, type, link, id, likes, summary, added;
 	let open = false;
 	let liked = false;
 
-	async function updateLikes(page_id) {
-		api.patch(`pages/${page_id}`, { properties: { Likes: { number: likes + 1 } } });
-	}
+	// 	async function updateLikes(page_id) {
+	// 		api.patch(`pages/${page_id}`, { properties: { Likes: { number: likes + 1 } } });
+	// 	}
+	//
 </script>
 
-<div class="mb-4 sm:mb-1 group">
+<div transition:fade={{ duration: 300 }} class="mb-4 sm:mb-1 group">
 	<div
 		on:click={() => (open = !open)}
 		class="sm:flex sm:flex-row justify-between cursor-pointer mt-1 mb-2 mx-1.5 sm:border-b border-transparent group-hover:border-black dark:group-hover:border-white"
@@ -40,7 +41,7 @@
 		</div>
 		<div class="flex gap-x-2 self-end">
 			<p>{type}&nbsp;&bullet;&nbsp;{date}</p>
-			<button on:click={updateLikes(id) && (() => (liked = !liked))}>
+			<!-- <button on:click={() => (liked = !liked)}>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					class="h-5 w-5 dark:text-white"
@@ -56,7 +57,7 @@
 					/>
 				</svg>
 			</button>
-			<p>{likes}</p>
+			<p>{likes}</p> -->
 		</div>
 	</div>
 
