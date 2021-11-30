@@ -23,11 +23,12 @@
 
 <script>
 	import { groups } from 'd3-array';
-	import { format, parse } from 'date-fns';
+	import { format } from 'date-fns';
 	import Fuse from 'fuse.js';
 
 	import Card from '../components/Card.svelte';
 	import Tag from '../components/Tag.svelte';
+	import Magnify from '../lib/svgs/magnify.svelte';
 
 	export let posts, tags;
 
@@ -48,11 +49,11 @@
 		isCaseSensitive: false,
 		includeScore: true,
 		shouldSort: true,
-		// includeMatches: false,
+		threshold: 0,
+		includeMatches: true,
+		// minMatchCharLength: 2,
 		// findAllMatches: false,
-		// minMatchCharLength: 1,
 		// location: 0,
-		// threshold: 0.6,
 		// distance: 100,
 		// useExtendedSearch: false,
 		// ignoreLocation: false,
@@ -61,7 +62,11 @@
 	});
 
 	$: searchedList = fuse.search(searchTerm);
-
+	$: console.log('NEW LIST:', searchedList);
+	$: console.log(
+		'\nMATCHES: ',
+		searchedList.map(({ matches }) => matches.map(({ value }) => value))
+	);
 	$: groupedPosts =
 		searchTerm.length === 0
 			? groups(initialPosts, ({ item }) => format(new Date(item.added), `MMMM yyyy`))
@@ -80,54 +85,46 @@
 	}
 </script>
 
-<div class="sm:mt-6 sm:flex justify-between">
-	<button on:click={() => (searching = !searching)}>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			class="h-6 w-6"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke="currentColor"
-		>
-			<path
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				stroke-width="2"
-				d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-			/>
-		</svg>
+<div class="sm:mt-6 sm:flex justify-between sticky top-0 py-2 z-20">
+	<button class="dark:bg-gray-900 bg-beige p-2 -m-2" on:click={() => (searching = !searching)}>
+		<Magnify />
 	</button>
 	{#if searching}
 		<input
 			bind:value={searchTerm}
-			class="flex flex-grow border border-b border-black"
+			class="flex flex-grow text-xl text-black dark:text-white border-b border-black dark:border-white bg-beige mx-2 dark:bg-gray-900 focus:outline-none"
 			type="text"
 			name="searchTerm"
 			id="searchTerm"
+			placeholder="search..."
+			autofocus
 		/>
 	{:else}
-		<ul class="gap-x-1 gap-y-2 sm:flex">
+		<!-- <ul class="gap-x-1 gap-y-2 sm:flex">
 			{#each Array.from(tags) as tag}
 				<Tag on:status={addStatus} {tag} />
 			{/each}
-		</ul>
+		</ul> -->
 	{/if}
 </div>
 
-<ul class="sm:mt-6">
+<ul>
+	{#if Array.from(groupedPosts).length === 0}
+		<p>There are no posts matching that term</p>
+	{/if}
 	{#each Array.from(groupedPosts) as section}
 		<li
-			class="sm:hidden font-semibold text-2xl pt-3 pb-1.5 mb-4 -mx-6 px-8 border-b-2 border-black dark:border-white sticky top-0 bg-beige"
+			class="sm:hidden font-semibold text-2xl pt-3 pb-1.5 mb-4 -mx-6 px-8 border-b-2 border-black dark:border-white sticky -top-12 bg-beige"
 		>
 			{section[0]}
 		</li>
 		<div class="flex">
-			<li class="hidden sm:inline-block self-start sticky-top mt-2 vertical">
+			<li class="hidden sm:inline-block self-start sticky top-12 mt-2 vertical">
 				{section[0]}
 			</li>
 			<div class="flex-grow sm:pl-3 sm:pr-5">
 				{#each section[1] as { item } (item.name)}
-					<Card {...item} />
+					<Card {...item} {searchTerm} />
 				{/each}
 			</div>
 		</div>

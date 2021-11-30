@@ -16,8 +16,8 @@
 	<button
 		on:click={select}
 		class={selected
-			? `bg-black text-white rounded-2xl px-1.5 py-0.5 duration-150`
-			: `bg-beige text-black rounded-2xl  px-1.5 py-0.5 duration-150`}
+			? `bg-black text-white rounded-3xl px-1.5 py-0.5 duration-150`
+			: `bg-beige text-black rounded-3xl  px-1.5 py-0.5 duration-150`}
 	>
 		{tag}
 	</button>

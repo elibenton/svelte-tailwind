@@ -1,10 +1,13 @@
 <script>
 	import * as api from '$lib/api';
 
-	import { cubicInOut, cubicOut } from 'svelte/easing';
+	import { cubicOut } from 'svelte/easing';
 	import { slide, fade, fly } from 'svelte/transition';
 
-	export let name, authors, publishers, date, type, link, id, likes, summary, added;
+	import Heart from '../lib/svgs/heart.svelte';
+
+	export let name, authors, publishers, date, type, link, likes, summary;
+	// export let searchTerm;
 	let open = false;
 	let liked = false;
 
@@ -21,41 +24,32 @@
 	>
 		<div>
 			<p class="font-semibold">{name}</p>
-			<p>
-				{#each authors as author, index}
-					{author}
-					{#if authors.length - 1 != index}
-						&bullet;&nbsp;
-					{/if}
-				{/each}
-				<span class="hidden sm:inline-block italic">
-					,&nbsp;
-					{#each publishers as publisher, index}
-						{publisher}
-						{#if publishers.length - 1 != index}
+			{#if authors}
+				<p>
+					{#each authors as author, index}
+						{author}
+						{#if authors.length - 1 != index}
 							&bullet;&nbsp;
 						{/if}
 					{/each}
-				</span>
-			</p>
+					{#if publishers}
+						<span class="hidden sm:inline-block italic">
+							,&nbsp;
+							{#each publishers as publisher, index}
+								{publisher}
+								{#if publishers.length - 1 != index}
+									&bullet;&nbsp;
+								{/if}
+							{/each}
+						</span>
+					{/if}
+				</p>
+			{/if}
 		</div>
 		<div class="flex gap-x-2 self-end">
 			<p>{type}&nbsp;&bullet;&nbsp;{date}</p>
 			<!-- <button on:click={() => (liked = !liked)}>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="h-5 w-5 dark:text-white"
-					fill={liked ? `currentColor` : `none`}
-					viewBox="0 0 24 24"
-					stroke="currentColor"
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-					/>
-				</svg>
+				<Heart />
 			</button>
 			<p>{likes}</p> -->
 		</div>
@@ -80,23 +74,25 @@
 			<button
 				class="bg-gray-900 hover:bg-gray-700 hover:ring-white rounded-md text-white px-2 py-1 text-xs"
 			>
-				<a target="_blank" rel="noopener noreferrer" class="flex gap-x-1" href={link}>
-					READ MORE
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="h-4 w-4"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke="currentColor"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M13 7l5 5m0 0l-5 5m5-5H6"
-						/>
-					</svg>
-				</a>
+				{#if link}
+					<a target="_blank" rel="noopener noreferrer" class="flex gap-x-1" href={link}>
+						READ MORE
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-4 w-4"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M13 7l5 5m0 0l-5 5m5-5H6"
+							/>
+						</svg>
+					</a>
+				{/if}
 			</button>
 		</div>
 	{:else}
