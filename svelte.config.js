@@ -1,11 +1,20 @@
 import preprocess from 'svelte-preprocess';
 import netlify from '@sveltejs/adapter-netlify';
 import vercel from '@sveltejs/adapter-vercel';
+import Icons from 'unplugin-icons/vite';
 
 const config = {
 	kit: {
 		adapter: process.env.VERCEL ? vercel() : netlify(),
-		target: '#svelte'
+		target: '#svelte',
+		vite: {
+			plugins: [
+				Icons({
+					compiler: 'svelte',
+					autoInstall: true
+				})
+			]
+		}
 	},
 	preprocess: [
 		preprocess({
