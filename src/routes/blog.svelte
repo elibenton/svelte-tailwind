@@ -27,10 +27,11 @@
 	import Fuse from 'fuse.js';
 
 	import Card from '../components/Card.svelte';
-	import Tag from '../components/Tag.svelte';
+	// import Tag from '../components/Tag.svelte';
 	import Magnify from '../lib/svgs/magnify.svelte';
 
-	export let posts, tags;
+	export let posts;
+	// export let tags;
 
 	let initialPosts = posts.map(
 		(post) =>
@@ -46,27 +47,27 @@
 	$: console.log(searchTerm);
 
 	const fuse = new Fuse(posts, {
-		isCaseSensitive: false,
-		includeScore: true,
-		shouldSort: true,
-		threshold: 0,
-		includeMatches: true,
-		// minMatchCharLength: 2,
+		keys: ['name', { name: 'authors', weight: 2 }],
+		includeScore: true, // default: false
+		threshold: 0.35, // default: 0.6
+		includeMatches: true, // default: false
+		ignoreLocation: true // default: false
+		// isCaseSensitive: false,
+		// shouldSort: true,
+		// minMatchCharLength: 1,
 		// findAllMatches: false,
 		// location: 0,
 		// distance: 100,
 		// useExtendedSearch: false,
-		// ignoreLocation: false,
 		// ignoreFieldNorm: false,
-		keys: ['name', { name: 'authors', weight: 2 }]
 	});
 
 	$: searchedList = fuse.search(searchTerm);
 	$: console.log('NEW LIST:', searchedList);
-	$: console.log(
-		'\nMATCHES: ',
-		searchedList.map(({ matches }) => matches.map(({ value }) => value))
-	);
+	// $: console.log(
+	// 	'\nMATCHES: ',
+	// 	searchedList.map(({ matches }) => matches.map(({ value }) => value))
+	// );
 	$: groupedPosts =
 		searchTerm.length === 0
 			? groups(initialPosts, ({ item }) => format(new Date(item.added), `MMMM yyyy`))
@@ -85,14 +86,17 @@
 	}
 </script>
 
-<div class="sm:mt-6 sm:flex justify-between sticky top-0 py-2 z-20">
-	<button class="dark:bg-gray-900 bg-beige p-2 -m-2" on:click={() => (searching = !searching)}>
+<div class="sm:mt-6 sm:flex content-center sticky top-0 py-2 z-20">
+	<button
+		class="dark:bg-gray-900 bg-beige px-2 -mx-2 py-3 -my-2"
+		on:click={() => (searching = !searching)}
+	>
 		<Magnify />
 	</button>
 	{#if searching}
 		<input
 			bind:value={searchTerm}
-			class="flex flex-grow text-xl text-black dark:text-white border-b border-black dark:border-white bg-beige mx-2 dark:bg-gray-900 focus:outline-none"
+			class="flex flex-grow text-xl mx-4 -my-2 py-2 text-black dark:text-white border-b border-black dark:border-white bg-beige dark:bg-gray-900 focus:outline-none"
 			type="text"
 			name="searchTerm"
 			id="searchTerm"
@@ -110,7 +114,10 @@
 
 <ul>
 	{#if Array.from(groupedPosts).length === 0}
-		<p>There are no posts matching that term</p>
+		<p class="mx-10 my-4 text-xl">
+			There are no posts matching that term. <br />
+			Please try another.
+		</p>
 	{/if}
 	{#each Array.from(groupedPosts) as section}
 		<li

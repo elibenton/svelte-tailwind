@@ -1,15 +1,16 @@
 <script>
-	import * as api from '$lib/api';
+	// import * as api from '$lib/api';
 
 	import { cubicOut } from 'svelte/easing';
-	import { slide, fade, fly } from 'svelte/transition';
+	import { slide, fade } from 'svelte/transition';
 
-	import Heart from '../lib/svgs/heart.svelte';
+	// import Heart from '../lib/svgs/heart.svelte';
 
-	export let name, authors, publishers, date, type, link, likes, summary;
+	export let name, authors, publishers, date, type, link;
+	// export let likes, summary;
 	// export let searchTerm;
 	let open = false;
-	let liked = false;
+	// let liked = false;
 
 	// 	async function updateLikes(page_id) {
 	// 		api.patch(`pages/${page_id}`, { properties: { Likes: { number: likes + 1 } } });
@@ -17,7 +18,7 @@
 	//
 </script>
 
-<div transition:fade={{ duration: 300 }} class="mb-4 sm:mb-1 group">
+<div class="mb-4 sm:mb-1 group">
 	<div
 		on:click={() => (open = !open)}
 		class="sm:flex sm:flex-row justify-between cursor-pointer mt-1 mb-2 mx-1.5 sm:border-b border-transparent group-hover:border-black dark:group-hover:border-white"
