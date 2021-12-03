@@ -3,6 +3,17 @@
 @tailwind base;
 @tailwind components;
 
+.no-apple-style {
+	/* border: none; */
+	/* border-style: none; */
+	border-radius: 0;
+	background-image: none;
+	background-color: transparent;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
 .vertical {
 	writing-mode: vertical-lr;
 }

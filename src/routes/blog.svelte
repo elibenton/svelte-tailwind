@@ -60,7 +60,7 @@
 			: groups(searchedList, ({ added }) => date(new Date(added), `MMMM yyyy`));
 </script>
 
-<div class="sm:mt-6 sm:mb-1 sm:flex content-center sticky top-0 py-2 z-20">
+<div class="mt-6 mb-1 flex content-center sm:sticky top-0 py-2 z-20">
 	<button
 		class="dark:bg-gray-900 bg-beige px-2 -mx-2 py-3 -my-2"
 		on:click={() => (searching = !searching)}
@@ -70,7 +70,7 @@
 	{#if searching}
 		<input
 			bind:value={searchTerm}
-			class="flex flex-grow text-xl mx-4 -my-2 py-2 text-black dark:text-white border-b border-black dark:border-white bg-beige dark:bg-gray-900 focus:outline-none"
+			class="flex flex-grow text-xl mx-4 -my-2 py-2 text-black dark:text-white border-b border-black dark:border-white bg-beige dark:bg-gray-900 focus:outline-none no-apple-style"
 			type="text"
 			name="searchTerm"
 			id="searchTerm"
