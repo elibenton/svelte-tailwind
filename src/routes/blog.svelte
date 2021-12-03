@@ -23,9 +23,9 @@
 
 <script>
 	import { groups } from 'd3-array';
-	import { format } from 'date-fns';
+	import { format as date } from 'date-fns';
 	import Fuse from 'fuse.js';
-	import clean from 'format-fuse.js';
+	import format from 'format-fuse.js';
 
 	import Card from '../components/Card.svelte';
 	import Magnify from '../lib/svgs/magnify.svelte';
@@ -52,12 +52,12 @@
 		// ignoreFieldNorm: false,
 	});
 
-	$: searchedList = clean(fuse.search(searchTerm));
+	$: searchedList = format(fuse.search(searchTerm));
 	$: console.log('NEW LIST:', searchedList);
 	$: groupedPosts =
 		searchTerm.length === 0
-			? groups(posts, ({ added }) => format(new Date(added), `MMMM yyyy`))
-			: groups(searchedList, ({ added }) => format(new Date(added), `MMMM yyyy`));
+			? groups(posts, ({ added }) => date(new Date(added), `MMMM yyyy`))
+			: groups(searchedList, ({ added }) => date(new Date(added), `MMMM yyyy`));
 </script>
 
 <div class="sm:mt-6 sm:mb-1 sm:flex content-center sticky top-0 py-2 z-20">

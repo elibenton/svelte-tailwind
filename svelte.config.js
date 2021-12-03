@@ -8,6 +8,9 @@ const config = {
 		adapter: process.env.VERCEL ? vercel() : netlify(),
 		target: '#svelte',
 		vite: {
+			ssr: {
+				noExternal: ['format-fuse.js']
+			},
 			plugins: [
 				Icons({
 					compiler: 'svelte',

@@ -179,11 +179,11 @@ async function consumeBody(data) {
   }
 }
 function fromRawHeaders(headers = []) {
-  return new Headers(headers.reduce((result, value, index, array) => {
+  return new Headers(headers.reduce((result2, value, index, array) => {
     if (index % 2 === 0) {
-      result.push(array.slice(index, index + 2));
+      result2.push(array.slice(index, index + 2));
     }
-    return result;
+    return result2;
   }, []).filter(([name, value]) => {
     try {
       validateHeaderName(name);
@@ -648,11 +648,11 @@ var init_install_fetch = __esm({
             throw new TypeError(`${context} is not a function.`);
           }
         }
-        function isObject(x) {
+        function isObject3(x) {
           return typeof x === "object" && x !== null || typeof x === "function";
         }
         function assertObject(x, context) {
-          if (!isObject(x)) {
+          if (!isObject3(x)) {
             throw new TypeError(`${context} is not an object.`);
           }
         }
@@ -882,9 +882,9 @@ var init_install_fetch = __esm({
               return promiseRejectedWith(readerLockException("finish iterating"));
             }
             if (!this._preventCancel) {
-              const result = ReadableStreamReaderGenericCancel(reader, value);
+              const result2 = ReadableStreamReaderGenericCancel(reader, value);
               ReadableStreamReaderGenericRelease(reader);
-              return transformPromiseWith(result, () => ({ value, done: true }));
+              return transformPromiseWith(result2, () => ({ value, done: true }));
             }
             ReadableStreamReaderGenericRelease(reader);
             return promiseResolvedWith({ value, done: true });
@@ -1104,9 +1104,9 @@ var init_install_fetch = __esm({
           [CancelSteps](reason) {
             ReadableByteStreamControllerClearPendingPullIntos(this);
             ResetQueue(this);
-            const result = this._cancelAlgorithm(reason);
+            const result2 = this._cancelAlgorithm(reason);
             ReadableByteStreamControllerClearAlgorithms(this);
-            return result;
+            return result2;
           }
           [PullSteps](readRequest) {
             const stream = this._controlledReadableByteStream;
@@ -2294,9 +2294,9 @@ var init_install_fetch = __esm({
             WritableStreamDefaultControllerError(this, e);
           }
           [AbortSteps](reason) {
-            const result = this._abortAlgorithm(reason);
+            const result2 = this._abortAlgorithm(reason);
             WritableStreamDefaultControllerClearAlgorithms(this);
-            return result;
+            return result2;
           }
           [ErrorSteps]() {
             ResetQueue(this);
@@ -2772,9 +2772,9 @@ var init_install_fetch = __esm({
           }
           [CancelSteps](reason) {
             ResetQueue(this);
-            const result = this._cancelAlgorithm(reason);
+            const result2 = this._cancelAlgorithm(reason);
             ReadableStreamDefaultControllerClearAlgorithms(this);
-            return result;
+            return result2;
           }
           [PullSteps](readRequest) {
             const stream = this._controlledReadableStream;
@@ -4331,23 +4331,23 @@ var init_install_fetch = __esm({
     };
     Headers = class extends URLSearchParams {
       constructor(init2) {
-        let result = [];
+        let result2 = [];
         if (init2 instanceof Headers) {
           const raw = init2.raw();
           for (const [name, values] of Object.entries(raw)) {
-            result.push(...values.map((value) => [name, value]));
+            result2.push(...values.map((value) => [name, value]));
           }
         } else if (init2 == null)
           ;
         else if (typeof init2 === "object" && !import_util.types.isBoxedPrimitive(init2)) {
           const method = init2[Symbol.iterator];
           if (method == null) {
-            result.push(...Object.entries(init2));
+            result2.push(...Object.entries(init2));
           } else {
             if (typeof method !== "function") {
               throw new TypeError("Header pairs must be iterable");
             }
-            result = [...init2].map((pair) => {
+            result2 = [...init2].map((pair) => {
               if (typeof pair !== "object" || import_util.types.isBoxedPrimitive(pair)) {
                 throw new TypeError("Each header pair must be an iterable object");
               }
@@ -4362,12 +4362,12 @@ var init_install_fetch = __esm({
         } else {
           throw new TypeError("Failed to construct 'Headers': The provided value is not of type '(sequence<sequence<ByteString>> or record<ByteString, ByteString>)");
         }
-        result = result.length > 0 ? result.map(([name, value]) => {
+        result2 = result2.length > 0 ? result2.map(([name, value]) => {
           validateHeaderName(name);
           validateHeaderValue(name, String(value));
           return [String(name).toLowerCase(), String(value)];
         }) : void 0;
-        super(result);
+        super(result2);
         return new Proxy(this, {
           get(target, p, receiver) {
             switch (p) {
@@ -4432,26 +4432,26 @@ var init_install_fetch = __esm({
         return this.entries();
       }
       raw() {
-        return [...this.keys()].reduce((result, key) => {
-          result[key] = this.getAll(key);
-          return result;
+        return [...this.keys()].reduce((result2, key) => {
+          result2[key] = this.getAll(key);
+          return result2;
         }, {});
       }
       [Symbol.for("nodejs.util.inspect.custom")]() {
-        return [...this.keys()].reduce((result, key) => {
+        return [...this.keys()].reduce((result2, key) => {
           const values = this.getAll(key);
           if (key === "host") {
-            result[key] = values[0];
+            result2[key] = values[0];
           } else {
-            result[key] = values.length > 1 ? values : values[0];
+            result2[key] = values.length > 1 ? values : values[0];
           }
-          return result;
+          return result2;
         }, {});
       }
     };
-    Object.defineProperties(Headers.prototype, ["get", "entries", "forEach", "values"].reduce((result, property) => {
-      result[property] = { enumerable: true };
-      return result;
+    Object.defineProperties(Headers.prototype, ["get", "entries", "forEach", "values"].reduce((result2, property) => {
+      result2[property] = { enumerable: true };
+      return result2;
     }, {}));
     redirectStatus = new Set([301, 302, 303, 307, 308]);
     isRedirect = (code) => {
@@ -5831,14 +5831,14 @@ var require_max = __commonJS({
       } else {
         return new Date(NaN);
       }
-      var result;
+      var result2;
       datesArray.forEach(function(dirtyDate) {
         var currentDate = (0, _index.default)(dirtyDate);
-        if (result === void 0 || result < currentDate || isNaN(Number(currentDate))) {
-          result = currentDate;
+        if (result2 === void 0 || result2 < currentDate || isNaN(Number(currentDate))) {
+          result2 = currentDate;
         }
       });
-      return result || new Date(NaN);
+      return result2 || new Date(NaN);
     }
     module2.exports = exports.default;
   }
@@ -5868,14 +5868,14 @@ var require_min = __commonJS({
       } else {
         return new Date(NaN);
       }
-      var result;
+      var result2;
       datesArray.forEach(function(dirtyDate) {
         var currentDate = (0, _index.default)(dirtyDate);
-        if (result === void 0 || result > currentDate || isNaN(currentDate.getDate())) {
-          result = currentDate;
+        if (result2 === void 0 || result2 > currentDate || isNaN(currentDate.getDate())) {
+          result2 = currentDate;
         }
       });
-      return result || new Date(NaN);
+      return result2 || new Date(NaN);
     }
     module2.exports = exports.default;
   }
@@ -5934,22 +5934,22 @@ var require_closestIndexTo = __commonJS({
       } else {
         datesArray = Array.prototype.slice.call(dirtyDatesArray);
       }
-      var result;
+      var result2;
       var minDistance;
       datesArray.forEach(function(dirtyDate, index) {
         var currentDate = (0, _index.default)(dirtyDate);
         if (isNaN(currentDate)) {
-          result = NaN;
+          result2 = NaN;
           minDistance = NaN;
           return;
         }
         var distance = Math.abs(timeToCompare - currentDate.getTime());
-        if (result == null || distance < minDistance) {
-          result = index;
+        if (result2 == null || distance < minDistance) {
+          result2 = index;
           minDistance = distance;
         }
       });
-      return result;
+      return result2;
     }
     module2.exports = exports.default;
   }
@@ -5984,22 +5984,22 @@ var require_closestTo = __commonJS({
       } else {
         datesArray = Array.prototype.slice.call(dirtyDatesArray);
       }
-      var result;
+      var result2;
       var minDistance;
       datesArray.forEach(function(dirtyDate) {
         var currentDate = (0, _index.default)(dirtyDate);
         if (isNaN(currentDate)) {
-          result = new Date(NaN);
+          result2 = new Date(NaN);
           minDistance = NaN;
           return;
         }
         var distance = Math.abs(timeToCompare - currentDate.getTime());
-        if (result == null || distance < minDistance) {
-          result = currentDate;
+        if (result2 == null || distance < minDistance) {
+          result2 = currentDate;
           minDistance = distance;
         }
       });
-      return result;
+      return result2;
     }
     module2.exports = exports.default;
   }
@@ -6227,13 +6227,13 @@ var require_differenceInBusinessDays = __commonJS({
       var calendarDifference = (0, _index4.default)(dateLeft, dateRight);
       var sign = calendarDifference < 0 ? -1 : 1;
       var weeks = (0, _index7.default)(calendarDifference / 7);
-      var result = weeks * 5;
+      var result2 = weeks * 5;
       dateRight = (0, _index5.default)(dateRight, weeks * 7);
       while (!(0, _index6.default)(dateLeft, dateRight)) {
-        result += (0, _index2.default)(dateRight) ? 0 : sign;
+        result2 += (0, _index2.default)(dateRight) ? 0 : sign;
         dateRight = (0, _index5.default)(dateRight, sign);
       }
-      return result === 0 ? 0 : result;
+      return result2 === 0 ? 0 : result2;
     }
     module2.exports = exports.default;
   }
@@ -6451,8 +6451,8 @@ var require_differenceInDays = __commonJS({
       var difference = Math.abs((0, _index2.default)(dateLeft, dateRight));
       dateLeft.setDate(dateLeft.getDate() - sign * difference);
       var isLastDayNotFull = Number(compareLocalAsc(dateLeft, dateRight) === -sign);
-      var result = sign * (difference - isLastDayNotFull);
-      return result === 0 ? 0 : result;
+      var result2 = sign * (difference - isLastDayNotFull);
+      return result2 === 0 ? 0 : result2;
     }
     module2.exports = exports.default;
   }
@@ -6578,8 +6578,8 @@ var require_differenceInISOWeekYears = __commonJS({
       var difference = Math.abs((0, _index2.default)(dateLeft, dateRight));
       dateLeft = (0, _index4.default)(dateLeft, sign * difference);
       var isLastISOWeekYearNotFull = Number((0, _index3.default)(dateLeft, dateRight) === -sign);
-      var result = sign * (difference - isLastISOWeekYearNotFull);
-      return result === 0 ? 0 : result;
+      var result2 = sign * (difference - isLastISOWeekYearNotFull);
+      return result2 === 0 ? 0 : result2;
     }
     module2.exports = exports.default;
   }
@@ -6708,9 +6708,9 @@ var require_differenceInMonths = __commonJS({
       var dateRight = (0, _index.default)(dirtyDateRight);
       var sign = (0, _index3.default)(dateLeft, dateRight);
       var difference = Math.abs((0, _index2.default)(dateLeft, dateRight));
-      var result;
+      var result2;
       if (difference < 1) {
-        result = 0;
+        result2 = 0;
       } else {
         if (dateLeft.getMonth() === 1 && dateLeft.getDate() > 27) {
           dateLeft.setDate(30);
@@ -6720,9 +6720,9 @@ var require_differenceInMonths = __commonJS({
         if ((0, _index5.default)((0, _index.default)(dirtyDateLeft)) && difference === 1 && (0, _index3.default)(dirtyDateLeft, dateRight) === 1) {
           isLastMonthNotFull = false;
         }
-        result = sign * (difference - Number(isLastMonthNotFull));
+        result2 = sign * (difference - Number(isLastMonthNotFull));
       }
-      return result === 0 ? 0 : result;
+      return result2 === 0 ? 0 : result2;
     }
     module2.exports = exports.default;
   }
@@ -6825,8 +6825,8 @@ var require_differenceInYears = __commonJS({
       dateLeft.setFullYear(1584);
       dateRight.setFullYear(1584);
       var isLastYearNotFull = (0, _index3.default)(dateLeft, dateRight) === -sign;
-      var result = sign * (difference - Number(isLastYearNotFull));
-      return result === 0 ? 0 : result;
+      var result2 = sign * (difference - Number(isLastYearNotFull));
+      return result2 === 0 ? 0 : result2;
     }
     module2.exports = exports.default;
   }
@@ -7690,26 +7690,26 @@ var require_formatDistance = __commonJS({
       }
     };
     var formatDistance = function(token, count, options2) {
-      var result;
+      var result2;
       var tokenValue = formatDistanceLocale[token];
       if (typeof tokenValue === "string") {
-        result = tokenValue;
+        result2 = tokenValue;
       } else if (count === 1) {
-        result = tokenValue.one;
+        result2 = tokenValue.one;
       } else {
-        result = tokenValue.other.replace("{{count}}", count.toString());
+        result2 = tokenValue.other.replace("{{count}}", count.toString());
       }
       if (options2 !== null && options2 !== void 0 && options2.addSuffix) {
         if (options2.comparison && options2.comparison > 0) {
-          return "in " + result;
+          return "in " + result2;
         } else {
-          return result + " ago";
+          return result2 + " ago";
         }
       }
-      return result;
+      return result2;
     };
-    var _default = formatDistance;
-    exports.default = _default;
+    var _default2 = formatDistance;
+    exports.default = _default2;
     module2.exports = exports.default;
   }
 });
@@ -7780,8 +7780,8 @@ var require_formatLong = __commonJS({
         defaultWidth: "full"
       })
     };
-    var _default = formatLong;
-    exports.default = _default;
+    var _default2 = formatLong;
+    exports.default = _default2;
     module2.exports = exports.default;
   }
 });
@@ -7806,8 +7806,8 @@ var require_formatRelative = __commonJS({
     var formatRelative = function(token, _date, _baseDate, _options) {
       return formatRelativeLocale[token];
     };
-    var _default = formatRelative;
-    exports.default = _default;
+    var _default2 = formatRelative;
+    exports.default = _default2;
     module2.exports = exports.default;
   }
 });
@@ -7984,8 +7984,8 @@ var require_localize = __commonJS({
         defaultFormattingWidth: "wide"
       })
     };
-    var _default = localize;
-    exports.default = _default;
+    var _default2 = localize;
+    exports.default = _default2;
     module2.exports = exports.default;
   }
 });
@@ -8186,8 +8186,8 @@ var require_match = __commonJS({
         defaultParseWidth: "any"
       })
     };
-    var _default = match;
-    exports.default = _default;
+    var _default2 = match;
+    exports.default = _default2;
     module2.exports = exports.default;
   }
 });
@@ -8221,8 +8221,8 @@ var require_en_US = __commonJS({
         firstWeekContainsDate: 1
       }
     };
-    var _default = locale;
-    exports.default = _default;
+    var _default2 = locale;
+    exports.default = _default2;
     module2.exports = exports.default;
   }
 });
@@ -8332,8 +8332,8 @@ var require_lightFormatters = __commonJS({
         return (0, _index.default)(fractionalSeconds, token.length);
       }
     };
-    var _default = formatters;
-    exports.default = _default;
+    var _default2 = formatters;
+    exports.default = _default2;
     module2.exports = exports.default;
   }
 });
@@ -9249,8 +9249,8 @@ var require_formatters = __commonJS({
       var minutes = (0, _index7.default)(absOffset % 60, 2);
       return sign + hours + delimiter + minutes;
     }
-    var _default = formatters;
-    exports.default = _default;
+    var _default2 = formatters;
+    exports.default = _default2;
     module2.exports = exports.default;
   }
 });
@@ -9343,8 +9343,8 @@ var require_longFormatters = __commonJS({
       p: timeLongFormatter,
       P: dateTimeLongFormatter
     };
-    var _default = longFormatters;
-    exports.default = _default;
+    var _default2 = longFormatters;
+    exports.default = _default2;
     module2.exports = exports.default;
   }
 });
@@ -9444,7 +9444,7 @@ var require_format = __commonJS({
         locale,
         _originalDate: originalDate
       };
-      var result = formatStr.match(longFormattingTokensRegExp).map(function(substring) {
+      var result2 = formatStr.match(longFormattingTokensRegExp).map(function(substring) {
         var firstCharacter = substring[0];
         if (firstCharacter === "p" || firstCharacter === "P") {
           var longFormatter = _index6.default[firstCharacter];
@@ -9474,7 +9474,7 @@ var require_format = __commonJS({
         }
         return substring;
       }).join("");
-      return result;
+      return result2;
     }
     function cleanEscapedString(input) {
       return input.match(escapedStringRegExp)[1].replace(doubleQuoteRegExp, "'");
@@ -9806,14 +9806,14 @@ var require_formatDuration = __commonJS({
       var locale = (options2 === null || options2 === void 0 ? void 0 : options2.locale) || _index.default;
       var zero = (options2 === null || options2 === void 0 ? void 0 : options2.zero) || false;
       var delimiter = (options2 === null || options2 === void 0 ? void 0 : options2.delimiter) || " ";
-      var result = format4.reduce(function(acc, unit) {
+      var result2 = format4.reduce(function(acc, unit) {
         var token = "x".concat(unit.replace(/(^.)/, function(m) {
           return m.toUpperCase();
         }));
         var addChunk = typeof duration[unit] === "number" && (zero || duration[unit]);
         return addChunk ? acc.concat(locale.formatDistance(token, duration[unit])) : acc;
       }, []).join(delimiter);
-      return result;
+      return result2;
     }
     module2.exports = exports.default;
   }
@@ -9851,7 +9851,7 @@ var require_formatISO = __commonJS({
       if (representation !== "date" && representation !== "time" && representation !== "complete") {
         throw new RangeError("representation must be 'date', 'time', or 'complete'");
       }
-      var result = "";
+      var result2 = "";
       var tzOffset = "";
       var dateDelimiter = format4 === "extended" ? "-" : "";
       var timeDelimiter = format4 === "extended" ? ":" : "";
@@ -9859,7 +9859,7 @@ var require_formatISO = __commonJS({
         var day = (0, _index3.default)(originalDate.getDate(), 2);
         var month = (0, _index3.default)(originalDate.getMonth() + 1, 2);
         var year = (0, _index3.default)(originalDate.getFullYear(), 4);
-        result = "".concat(year).concat(dateDelimiter).concat(month).concat(dateDelimiter).concat(day);
+        result2 = "".concat(year).concat(dateDelimiter).concat(month).concat(dateDelimiter).concat(day);
       }
       if (representation !== "date") {
         var offset = originalDate.getTimezoneOffset();
@@ -9875,11 +9875,11 @@ var require_formatISO = __commonJS({
         var hour = (0, _index3.default)(originalDate.getHours(), 2);
         var minute = (0, _index3.default)(originalDate.getMinutes(), 2);
         var second = (0, _index3.default)(originalDate.getSeconds(), 2);
-        var separator = result === "" ? "" : "T";
+        var separator = result2 === "" ? "" : "T";
         var time = [hour, minute, second].join(timeDelimiter);
-        result = "".concat(result).concat(separator).concat(time).concat(tzOffset);
+        result2 = "".concat(result2).concat(separator).concat(time).concat(tzOffset);
       }
-      return result;
+      return result2;
     }
     module2.exports = exports.default;
   }
@@ -9917,23 +9917,23 @@ var require_formatISO9075 = __commonJS({
       if (representation !== "date" && representation !== "time" && representation !== "complete") {
         throw new RangeError("representation must be 'date', 'time', or 'complete'");
       }
-      var result = "";
+      var result2 = "";
       var dateDelimiter = format4 === "extended" ? "-" : "";
       var timeDelimiter = format4 === "extended" ? ":" : "";
       if (representation !== "time") {
         var day = (0, _index3.default)(originalDate.getDate(), 2);
         var month = (0, _index3.default)(originalDate.getMonth() + 1, 2);
         var year = (0, _index3.default)(originalDate.getFullYear(), 4);
-        result = "".concat(year).concat(dateDelimiter).concat(month).concat(dateDelimiter).concat(day);
+        result2 = "".concat(year).concat(dateDelimiter).concat(month).concat(dateDelimiter).concat(day);
       }
       if (representation !== "date") {
         var hour = (0, _index3.default)(originalDate.getHours(), 2);
         var minute = (0, _index3.default)(originalDate.getMinutes(), 2);
         var second = (0, _index3.default)(originalDate.getSeconds(), 2);
-        var separator = result === "" ? "" : " ";
-        result = "".concat(result).concat(separator).concat(hour).concat(timeDelimiter).concat(minute).concat(timeDelimiter).concat(second);
+        var separator = result2 === "" ? "" : " ";
+        result2 = "".concat(result2).concat(separator).concat(hour).concat(timeDelimiter).concat(minute).concat(timeDelimiter).concat(second);
       }
-      return result;
+      return result2;
     }
     module2.exports = exports.default;
   }
@@ -11518,16 +11518,16 @@ var require_parsers = __commonJS({
     function normalizeTwoDigitYear(twoDigitYear, currentYear) {
       var isCommonEra = currentYear > 0;
       var absCurrentYear = isCommonEra ? currentYear : 1 - currentYear;
-      var result;
+      var result2;
       if (absCurrentYear <= 50) {
-        result = twoDigitYear || 100;
+        result2 = twoDigitYear || 100;
       } else {
         var rangeEnd = absCurrentYear + 50;
         var rangeEndCentury = Math.floor(rangeEnd / 100) * 100;
         var isPreviousCentury = twoDigitYear >= rangeEnd % 100;
-        result = twoDigitYear + rangeEndCentury - (isPreviousCentury ? 100 : 0);
+        result2 = twoDigitYear + rangeEndCentury - (isPreviousCentury ? 100 : 0);
       }
-      return isCommonEra ? result : 1 - result;
+      return isCommonEra ? result2 : 1 - result2;
     }
     var DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     var DAYS_IN_MONTH_LEAP_YEAR = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -12615,8 +12615,8 @@ var require_parsers = __commonJS({
         incompatibleTokens: "*"
       }
     };
-    var _default = parsers;
-    exports.default = _default;
+    var _default2 = parsers;
+    exports.default = _default2;
     module2.exports = exports.default;
   }
 });
@@ -12788,12 +12788,12 @@ var require_parse = __commonJS({
         if (setter.validate && !setter.validate(utcDate, setter.value, subFnOptions)) {
           return new Date(NaN);
         }
-        var result = setter.set(utcDate, flags, setter.value, subFnOptions);
-        if (result[0]) {
-          utcDate = result[0];
-          (0, _index4.default)(flags, result[1]);
+        var result2 = setter.set(utcDate, flags, setter.value, subFnOptions);
+        if (result2[0]) {
+          utcDate = result2[0];
+          (0, _index4.default)(flags, result2[1]);
         } else {
-          utcDate = result;
+          utcDate = result2;
         }
       }
       return utcDate;
@@ -13685,7 +13685,7 @@ var require_lightFormat = __commonJS({
       var tokens = formatStr.match(formattingTokensRegExp);
       if (!tokens)
         return "";
-      var result = tokens.map(function(substring) {
+      var result2 = tokens.map(function(substring) {
         if (substring === "''") {
           return "'";
         }
@@ -13702,7 +13702,7 @@ var require_lightFormat = __commonJS({
         }
         return substring;
       }).join("");
-      return result;
+      return result2;
     }
     function cleanEscapedString(input) {
       var matches = input.match(escapedStringRegExp);
@@ -14183,10 +14183,10 @@ var require_parseISO = __commonJS({
         }
       } else {
         var dirtyDate = new Date(timestamp + time);
-        var result = new Date(0);
-        result.setFullYear(dirtyDate.getUTCFullYear(), dirtyDate.getUTCMonth(), dirtyDate.getUTCDate());
-        result.setHours(dirtyDate.getUTCHours(), dirtyDate.getUTCMinutes(), dirtyDate.getUTCSeconds(), dirtyDate.getUTCMilliseconds());
-        return result;
+        var result2 = new Date(0);
+        result2.setFullYear(dirtyDate.getUTCFullYear(), dirtyDate.getUTCMonth(), dirtyDate.getUTCDate());
+        result2.setHours(dirtyDate.getUTCHours(), dirtyDate.getUTCMinutes(), dirtyDate.getUTCSeconds(), dirtyDate.getUTCMilliseconds());
+        return result2;
       }
       return new Date(timestamp + time + offset);
     }
@@ -14722,7 +14722,7 @@ var require_set = __commonJS({
     Object.defineProperty(exports, "__esModule", {
       value: true
     });
-    exports.default = set;
+    exports.default = set2;
     var _index = _interopRequireDefault(require_toDate());
     var _index2 = _interopRequireDefault(require_setMonth());
     var _index3 = _interopRequireDefault(require_toInteger());
@@ -14730,7 +14730,7 @@ var require_set = __commonJS({
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
-    function set(dirtyDate, values) {
+    function set2(dirtyDate, values) {
       (0, _index4.default)(2, arguments);
       if (typeof values !== "object" || values === null) {
         throw new RangeError("values parameter must be an object");
@@ -17455,16 +17455,16 @@ var init_page_id_json_6f4341bb = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/__layout-7e01c435.js
-var layout_7e01c435_exports = {};
-__export(layout_7e01c435_exports, {
+// .svelte-kit/output/server/chunks/__layout-b90a2adb.js
+var layout_b90a2adb_exports = {};
+__export(layout_b90a2adb_exports, {
   default: () => _layout
 });
 var import_cookie, _layout;
-var init_layout_7e01c435 = __esm({
-  ".svelte-kit/output/server/chunks/__layout-7e01c435.js"() {
+var init_layout_b90a2adb = __esm({
+  ".svelte-kit/output/server/chunks/__layout-b90a2adb.js"() {
     init_shims();
-    init_app_197470c9();
+    init_app_81cd4c92();
     import_cookie = __toModule(require_cookie());
     _layout = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       return `
@@ -17475,9 +17475,9 @@ var init_layout_7e01c435 = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/__error-3913cfe3.js
-var error_3913cfe3_exports = {};
-__export(error_3913cfe3_exports, {
+// .svelte-kit/output/server/chunks/__error-1385c46c.js
+var error_1385c46c_exports = {};
+__export(error_1385c46c_exports, {
   default: () => _error,
   load: () => load
 });
@@ -17485,10 +17485,10 @@ function load({ error: error2, status }) {
   return { props: { error: error2, status } };
 }
 var import_cookie2, _error;
-var init_error_3913cfe3 = __esm({
-  ".svelte-kit/output/server/chunks/__error-3913cfe3.js"() {
+var init_error_1385c46c = __esm({
+  ".svelte-kit/output/server/chunks/__error-1385c46c.js"() {
     init_shims();
-    init_app_197470c9();
+    init_app_81cd4c92();
     import_cookie2 = __toModule(require_cookie());
     _error = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       let { error: error2, status } = $$props;
@@ -17507,16 +17507,16 @@ var init_error_3913cfe3 = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/index-a640aae3.js
-var index_a640aae3_exports = {};
-__export(index_a640aae3_exports, {
+// .svelte-kit/output/server/chunks/index-4dc85bdb.js
+var index_4dc85bdb_exports = {};
+__export(index_4dc85bdb_exports, {
   default: () => Routes
 });
 var import_cookie3, Routes;
-var init_index_a640aae3 = __esm({
-  ".svelte-kit/output/server/chunks/index-a640aae3.js"() {
+var init_index_4dc85bdb = __esm({
+  ".svelte-kit/output/server/chunks/index-4dc85bdb.js"() {
     init_shims();
-    init_app_197470c9();
+    init_app_81cd4c92();
     import_cookie3 = __toModule(require_cookie());
     Routes = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       return `<div class="${"my-8 md:my-24"}"><h1 class="${"text-3xl md:text-4xl xl:text-5xl pb-4 md:pb-8 font-bold"}">Eli Benton Cohen</h1>
@@ -17670,14 +17670,14 @@ var require_fuse_common = __commonJS({
     function _createSuper(Derived) {
       var hasNativeReflectConstruct = _isNativeReflectConstruct();
       return function _createSuperInternal() {
-        var Super = _getPrototypeOf(Derived), result;
+        var Super = _getPrototypeOf(Derived), result2;
         if (hasNativeReflectConstruct) {
           var NewTarget = _getPrototypeOf(this).constructor;
-          result = Reflect.construct(Super, arguments, NewTarget);
+          result2 = Reflect.construct(Super, arguments, NewTarget);
         } else {
-          result = Super.apply(this, arguments);
+          result2 = Super.apply(this, arguments);
         }
-        return _possibleConstructorReturn(this, result);
+        return _possibleConstructorReturn(this, result2);
       };
     }
     function _toConsumableArray(arr) {
@@ -17722,8 +17722,8 @@ var require_fuse_common = __commonJS({
       if (typeof value == "string") {
         return value;
       }
-      var result = value + "";
-      return result == "0" && 1 / value == -INFINITY ? "-0" : result;
+      var result2 = value + "";
+      return result2 == "0" && 1 / value == -INFINITY ? "-0" : result2;
     }
     function toString(value) {
       return value == null ? "" : baseToString(value);
@@ -17737,11 +17737,11 @@ var require_fuse_common = __commonJS({
     function isBoolean(value) {
       return value === true || value === false || isObjectLike(value) && getTag(value) == "[object Boolean]";
     }
-    function isObject(value) {
+    function isObject3(value) {
       return _typeof(value) === "object";
     }
     function isObjectLike(value) {
-      return isObject(value) && value !== null;
+      return isObject3(value) && value !== null;
     }
     function isDefined(value) {
       return value !== void 0 && value !== null;
@@ -17774,7 +17774,7 @@ var require_fuse_common = __commonJS({
         this._keyMap = {};
         var totalWeight = 0;
         keys.forEach(function(key) {
-          var obj = createKey(key);
+          var obj = createKey2(key);
           totalWeight += obj.weight;
           _this._keys.push(obj);
           _this._keyMap[obj.id] = obj;
@@ -17802,7 +17802,7 @@ var require_fuse_common = __commonJS({
       }]);
       return KeyStore2;
     }();
-    function createKey(key) {
+    function createKey2(key) {
       var path = null;
       var id = null;
       var src2 = null;
@@ -18077,7 +18077,7 @@ var require_fuse_common = __commonJS({
       var myIndex = new FuseIndex({
         getFn
       });
-      myIndex.setKeys(keys.map(createKey));
+      myIndex.setKeys(keys.map(createKey2));
       myIndex.setSources(docs);
       myIndex.create();
       return myIndex;
@@ -18227,19 +18227,19 @@ var require_fuse_common = __commonJS({
         }
         lastBitArr = bitArr;
       }
-      var result = {
+      var result2 = {
         isMatch: bestLocation >= 0,
         score: Math.max(1e-3, finalScore)
       };
       if (computeMatches) {
         var indices = convertMaskToIndices(matchMask, minMatchCharLength);
         if (!indices.length) {
-          result.isMatch = false;
+          result2.isMatch = false;
         } else if (includeMatches) {
-          result.indices = indices;
+          result2.indices = indices;
         }
       }
-      return result;
+      return result2;
     }
     function createPatternAlphabet(pattern) {
       var mask = {};
@@ -18333,14 +18333,14 @@ var require_fuse_common = __commonJS({
               allIndices = [].concat(_toConsumableArray(allIndices), _toConsumableArray(indices));
             }
           });
-          var result = {
+          var result2 = {
             isMatch: hasMatches,
             score: hasMatches ? totalScore / this.chunks.length : 1
           };
           if (hasMatches && includeMatches) {
-            result.indices = allIndices;
+            result2.indices = allIndices;
           }
-          return result;
+          return result2;
         }
       }]);
       return BitapSearch2;
@@ -18767,14 +18767,14 @@ var require_fuse_common = __commonJS({
               }
             }
             if (numMatches) {
-              var result = {
+              var result2 = {
                 isMatch: true,
                 score: totalScore / numMatches
               };
               if (includeMatches) {
-                result.indices = allIndices;
+                result2.indices = allIndices;
               }
-              return result;
+              return result2;
             }
           }
           return {
@@ -18818,7 +18818,7 @@ var require_fuse_common = __commonJS({
       return !!query[KeyType.PATH];
     };
     var isLeaf = function isLeaf2(query) {
-      return !isArray(query) && isObject(query) && !isExpression(query);
+      return !isArray(query) && isObject3(query) && !isExpression(query);
     };
     var convertToExplicit = function convertToExplicit2(query) {
       return _defineProperty({}, LogicalOperator.AND, Object.keys(query).map(function(key) {
@@ -18869,18 +18869,18 @@ var require_fuse_common = __commonJS({
     }
     function computeScore$1(results, _ref) {
       var _ref$ignoreFieldNorm = _ref.ignoreFieldNorm, ignoreFieldNorm = _ref$ignoreFieldNorm === void 0 ? Config.ignoreFieldNorm : _ref$ignoreFieldNorm;
-      results.forEach(function(result) {
+      results.forEach(function(result2) {
         var totalScore = 1;
-        result.matches.forEach(function(_ref2) {
+        result2.matches.forEach(function(_ref2) {
           var key = _ref2.key, norm2 = _ref2.norm, score = _ref2.score;
           var weight = key ? key.weight : null;
           totalScore *= Math.pow(score === 0 && weight ? Number.EPSILON : score, (weight || 1) * (ignoreFieldNorm ? 1 : norm2));
         });
-        result.score = totalScore;
+        result2.score = totalScore;
       });
     }
-    function transformMatches(result, data) {
-      var matches = result.matches;
+    function transformMatches(result2, data) {
+      var matches = result2.matches;
       data.matches = [];
       if (!isDefined(matches)) {
         return;
@@ -18903,8 +18903,8 @@ var require_fuse_common = __commonJS({
         data.matches.push(obj);
       });
     }
-    function transformScore(result, data) {
-      data.score = result.score;
+    function transformScore(result2, data) {
+      data.score = result2.score;
     }
     function format4(results, docs) {
       var _ref = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {}, _ref$includeMatches = _ref.includeMatches, includeMatches = _ref$includeMatches === void 0 ? Config.includeMatches : _ref$includeMatches, _ref$includeScore = _ref.includeScore, includeScore = _ref$includeScore === void 0 ? Config.includeScore : _ref$includeScore;
@@ -18913,15 +18913,15 @@ var require_fuse_common = __commonJS({
         transformers.push(transformMatches);
       if (includeScore)
         transformers.push(transformScore);
-      return results.map(function(result) {
-        var idx = result.idx;
+      return results.map(function(result2) {
+        var idx = result2.idx;
         var data = {
           item: docs[idx],
           refIndex: idx
         };
         if (transformers.length) {
           transformers.forEach(function(transformer) {
-            transformer(result, data);
+            transformer(result2, data);
           });
         }
         return data;
@@ -19062,9 +19062,9 @@ var require_fuse_common = __commonJS({
                 var res = [];
                 for (var i = 0, len = node.children.length; i < len; i += 1) {
                   var child = node.children[i];
-                  var result = evaluate2(child, item, idx);
-                  if (result.length) {
-                    res.push.apply(res, _toConsumableArray(result));
+                  var result2 = evaluate2(child, item, idx);
+                  if (result2.length) {
+                    res.push.apply(res, _toConsumableArray(result2));
                   } else {
                     return [];
                   }
@@ -19199,225 +19199,9 @@ var require_fuse_common = __commonJS({
   }
 });
 
-// node_modules/isobject/index.js
-var require_isobject = __commonJS({
-  "node_modules/isobject/index.js"(exports, module2) {
-    init_shims();
-    "use strict";
-    module2.exports = function isObject(val) {
-      return val != null && typeof val === "object" && Array.isArray(val) === false;
-    };
-  }
-});
-
-// node_modules/is-plain-object/index.js
-var require_is_plain_object = __commonJS({
-  "node_modules/is-plain-object/index.js"(exports, module2) {
-    init_shims();
-    "use strict";
-    var isObject = require_isobject();
-    function isObjectObject(o) {
-      return isObject(o) === true && Object.prototype.toString.call(o) === "[object Object]";
-    }
-    module2.exports = function isPlainObject(o) {
-      var ctor, prot;
-      if (isObjectObject(o) === false)
-        return false;
-      ctor = o.constructor;
-      if (typeof ctor !== "function")
-        return false;
-      prot = ctor.prototype;
-      if (isObjectObject(prot) === false)
-        return false;
-      if (prot.hasOwnProperty("isPrototypeOf") === false) {
-        return false;
-      }
-      return true;
-    };
-  }
-});
-
-// node_modules/set-value/index.js
-var require_set_value = __commonJS({
-  "node_modules/set-value/index.js"(exports, module2) {
-    init_shims();
-    "use strict";
-    var isPlain = require_is_plain_object();
-    function set(target, path, value, options2) {
-      if (!isObject(target)) {
-        return target;
-      }
-      let opts = options2 || {};
-      const isArray = Array.isArray(path);
-      if (!isArray && typeof path !== "string") {
-        return target;
-      }
-      let merge = opts.merge;
-      if (merge && typeof merge !== "function") {
-        merge = Object.assign;
-      }
-      const keys = (isArray ? path : split(path, opts)).filter(isValidKey);
-      const len = keys.length;
-      const orig = target;
-      if (!options2 && keys.length === 1) {
-        result(target, keys[0], value, merge);
-        return target;
-      }
-      for (let i = 0; i < len; i++) {
-        let prop = keys[i];
-        if (!isObject(target[prop])) {
-          target[prop] = {};
-        }
-        if (i === len - 1) {
-          result(target, prop, value, merge);
-          break;
-        }
-        target = target[prop];
-      }
-      return orig;
-    }
-    function result(target, path, value, merge) {
-      if (merge && isPlain(target[path]) && isPlain(value)) {
-        target[path] = merge({}, target[path], value);
-      } else {
-        target[path] = value;
-      }
-    }
-    function split(path, options2) {
-      const id = createKey(path, options2);
-      if (set.memo[id])
-        return set.memo[id];
-      const char = options2 && options2.separator ? options2.separator : ".";
-      let keys = [];
-      let res = [];
-      if (options2 && typeof options2.split === "function") {
-        keys = options2.split(path);
-      } else {
-        keys = path.split(char);
-      }
-      for (let i = 0; i < keys.length; i++) {
-        let prop = keys[i];
-        while (prop && prop.slice(-1) === "\\" && keys[i + 1] != null) {
-          prop = prop.slice(0, -1) + char + keys[++i];
-        }
-        res.push(prop);
-      }
-      set.memo[id] = res;
-      return res;
-    }
-    function createKey(pattern, options2) {
-      let id = pattern;
-      if (typeof options2 === "undefined") {
-        return id + "";
-      }
-      const keys = Object.keys(options2);
-      for (let i = 0; i < keys.length; i++) {
-        const key = keys[i];
-        id += ";" + key + "=" + String(options2[key]);
-      }
-      return id;
-    }
-    function isValidKey(key) {
-      return key !== "__proto__" && key !== "constructor" && key !== "prototype";
-    }
-    function isObject(val) {
-      return val !== null && (typeof val === "object" || typeof val === "function");
-    }
-    set.memo = {};
-    module2.exports = set;
-  }
-});
-
-// node_modules/strind/lib/strind.js
-var require_strind = __commonJS({
-  "node_modules/strind/lib/strind.js"(exports) {
-    init_shims();
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    function strind(str, indices, callback) {
-      var strs = str.split("");
-      var strsLen = strs.length;
-      var idx = Array.isArray(indices[0]) ? indices : [indices];
-      var partition = [];
-      var nonmatched = [];
-      function updateNonmatched(open2, close2, index) {
-        var chars3 = str.slice(open2, close2);
-        if (!chars3.length) {
-          return;
-        }
-        nonmatched.push({ chars: chars3, index });
-        if (callback) {
-          var cb2 = callback({ chars: chars3, matches: false });
-          partition.push(cb2);
-        }
-      }
-      for (var i = 0, len = idx.length; i < len; i++) {
-        var _a = idx[i], start = _a[0], end = _a[1];
-        var floor = start >= 0 ? start : 0;
-        var ceiling = end >= strsLen ? strsLen : end + 1;
-        if (i === 0 && start > 0) {
-          updateNonmatched(0, start, 0);
-        }
-        var chars2 = str.slice(floor, ceiling);
-        if (callback) {
-          var cb = callback({ chars: chars2, matches: true });
-          partition.push(cb);
-        } else {
-          partition.push(chars2);
-        }
-        if (end < strsLen) {
-          var open = end + 1;
-          var close = i < len - 1 ? idx[i + 1][0] : strsLen;
-          updateNonmatched(open, close, partition.length);
-        }
-        if (end >= strsLen) {
-          break;
-        }
-      }
-      return {
-        unmatched: nonmatched,
-        matched: partition
-      };
-    }
-    exports.default = strind;
-  }
-});
-
-// node_modules/format-fuse.js/lib/format-fuse.js.js
-var require_format_fuse_js = __commonJS({
-  "node_modules/format-fuse.js/lib/format-fuse.js.js"(exports) {
-    init_shims();
-    "use strict";
-    var __importDefault = exports && exports.__importDefault || function(mod) {
-      return mod && mod.__esModule ? mod : { "default": mod };
-    };
-    Object.defineProperty(exports, "__esModule", { value: true });
-    var set_value_1 = __importDefault(require_set_value());
-    var strind_1 = __importDefault(require_strind());
-    function formatFuseJs(results) {
-      const matched = [];
-      results.forEach(({ item, matches }, index) => {
-        matched.push(Object.assign({}, item));
-        matches.forEach(({ indices, key, value }) => {
-          const output = strind_1.default(value, indices, (data) => ({ text: data.chars, matches: data.matches }));
-          const formattedResult = output.matched;
-          const match = matched[index];
-          if (key.split(".").length > 1) {
-            set_value_1.default(match, key, formattedResult);
-          } else {
-            match[key] = formattedResult;
-          }
-        });
-      });
-      return matched;
-    }
-    exports.default = formatFuseJs;
-  }
-});
-
-// .svelte-kit/output/server/chunks/blog-cc0a12dd.js
-var blog_cc0a12dd_exports = {};
-__export(blog_cc0a12dd_exports, {
+// .svelte-kit/output/server/chunks/blog-708283b6.js
+var blog_708283b6_exports = {};
+__export(blog_708283b6_exports, {
   default: () => Blog,
   load: () => load2
 });
@@ -19470,6 +19254,151 @@ function nest(values, map, reduce, keys) {
     return map(groups2);
   }(values, 0);
 }
+function isObjectObject(o) {
+  return isObject$1(o) === true && Object.prototype.toString.call(o) === "[object Object]";
+}
+function set(target, path, value, options2) {
+  if (!isObject2(target)) {
+    return target;
+  }
+  let opts = options2 || {};
+  const isArray = Array.isArray(path);
+  if (!isArray && typeof path !== "string") {
+    return target;
+  }
+  let merge = opts.merge;
+  if (merge && typeof merge !== "function") {
+    merge = Object.assign;
+  }
+  const keys = (isArray ? path : split(path, opts)).filter(isValidKey);
+  const len = keys.length;
+  const orig = target;
+  if (!options2 && keys.length === 1) {
+    result(target, keys[0], value, merge);
+    return target;
+  }
+  for (let i = 0; i < len; i++) {
+    let prop = keys[i];
+    if (!isObject2(target[prop])) {
+      target[prop] = {};
+    }
+    if (i === len - 1) {
+      result(target, prop, value, merge);
+      break;
+    }
+    target = target[prop];
+  }
+  return orig;
+}
+function result(target, path, value, merge) {
+  if (merge && isPlain(target[path]) && isPlain(value)) {
+    target[path] = merge({}, target[path], value);
+  } else {
+    target[path] = value;
+  }
+}
+function split(path, options2) {
+  const id = createKey(path, options2);
+  if (set.memo[id])
+    return set.memo[id];
+  const char = options2 && options2.separator ? options2.separator : ".";
+  let keys = [];
+  let res = [];
+  if (options2 && typeof options2.split === "function") {
+    keys = options2.split(path);
+  } else {
+    keys = path.split(char);
+  }
+  for (let i = 0; i < keys.length; i++) {
+    let prop = keys[i];
+    while (prop && prop.slice(-1) === "\\" && keys[i + 1] != null) {
+      prop = prop.slice(0, -1) + char + keys[++i];
+    }
+    res.push(prop);
+  }
+  set.memo[id] = res;
+  return res;
+}
+function createKey(pattern, options2) {
+  let id = pattern;
+  if (typeof options2 === "undefined") {
+    return id + "";
+  }
+  const keys = Object.keys(options2);
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i];
+    id += ";" + key + "=" + String(options2[key]);
+  }
+  return id;
+}
+function isValidKey(key) {
+  return key !== "__proto__" && key !== "constructor" && key !== "prototype";
+}
+function isObject2(val) {
+  return val !== null && (typeof val === "object" || typeof val === "function");
+}
+function strind(str, indices, callback) {
+  var strs = str.split("");
+  var strsLen = strs.length;
+  var idx = Array.isArray(indices[0]) ? indices : [indices];
+  var partition = [];
+  var nonmatched = [];
+  function updateNonmatched(open2, close2, index) {
+    var chars22 = str.slice(open2, close2);
+    if (!chars22.length) {
+      return;
+    }
+    nonmatched.push({ chars: chars22, index });
+    if (callback) {
+      var cb2 = callback({ chars: chars22, matches: false });
+      partition.push(cb2);
+    }
+  }
+  for (var i = 0, len = idx.length; i < len; i++) {
+    var _a = idx[i], start = _a[0], end = _a[1];
+    var floor = start >= 0 ? start : 0;
+    var ceiling = end >= strsLen ? strsLen : end + 1;
+    if (i === 0 && start > 0) {
+      updateNonmatched(0, start, 0);
+    }
+    var chars2 = str.slice(floor, ceiling);
+    if (callback) {
+      var cb = callback({ chars: chars2, matches: true });
+      partition.push(cb);
+    } else {
+      partition.push(chars2);
+    }
+    if (end < strsLen) {
+      var open = end + 1;
+      var close = i < len - 1 ? idx[i + 1][0] : strsLen;
+      updateNonmatched(open, close, partition.length);
+    }
+    if (end >= strsLen) {
+      break;
+    }
+  }
+  return {
+    unmatched: nonmatched,
+    matched: partition
+  };
+}
+function formatFuseJs(results) {
+  const matched = [];
+  results.forEach(({ item, matches }, index) => {
+    matched.push(Object.assign({}, item));
+    matches.forEach(({ indices, key, value }) => {
+      const output = strind_1.default(value, indices, (data) => ({ text: data.chars, matches: data.matches }));
+      const formattedResult = output.matched;
+      const match = matched[index];
+      if (key.split(".").length > 1) {
+        set_value_1.default(match, key, formattedResult);
+      } else {
+        match[key] = formattedResult;
+      }
+    });
+  });
+  return matched;
+}
 async function load2({ fetch: fetch2 }) {
   const url = `/blog.json`;
   const res = await fetch2(url);
@@ -19485,14 +19414,13 @@ async function load2({ fetch: fetch2 }) {
     error: new Error(`Could not load ${url}`)
   };
 }
-var import_date_fns2, import_fuse, import_format_fuse, import_cookie4, InternMap, Card, Magnify, Blog;
-var init_blog_cc0a12dd = __esm({
-  ".svelte-kit/output/server/chunks/blog-cc0a12dd.js"() {
+var import_date_fns2, import_fuse, import_cookie4, InternMap, commonjsGlobal2, formatFuse_js, isobject, isObject$1, isPlainObject, isPlain, setValue, strind$1, __importDefault, set_value_1, strind_1, _default, Card, Magnify, Blog;
+var init_blog_708283b6 = __esm({
+  ".svelte-kit/output/server/chunks/blog-708283b6.js"() {
     init_shims();
-    init_app_197470c9();
+    init_app_81cd4c92();
     import_date_fns2 = __toModule(require_date_fns());
     import_fuse = __toModule(require_fuse_common());
-    import_format_fuse = __toModule(require_format_fuse_js());
     import_cookie4 = __toModule(require_cookie());
     InternMap = class extends Map {
       constructor(entries, key = keyof) {
@@ -19515,6 +19443,40 @@ var init_blog_cc0a12dd = __esm({
         return super.delete(intern_delete(this, key));
       }
     };
+    commonjsGlobal2 = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
+    formatFuse_js = {};
+    isobject = function isObject(val) {
+      return val != null && typeof val === "object" && Array.isArray(val) === false;
+    };
+    isObject$1 = isobject;
+    isPlainObject = function isPlainObject2(o) {
+      var ctor, prot;
+      if (isObjectObject(o) === false)
+        return false;
+      ctor = o.constructor;
+      if (typeof ctor !== "function")
+        return false;
+      prot = ctor.prototype;
+      if (isObjectObject(prot) === false)
+        return false;
+      if (prot.hasOwnProperty("isPrototypeOf") === false) {
+        return false;
+      }
+      return true;
+    };
+    isPlain = isPlainObject;
+    set.memo = {};
+    setValue = set;
+    strind$1 = {};
+    Object.defineProperty(strind$1, "__esModule", { value: true });
+    strind$1.default = strind;
+    __importDefault = commonjsGlobal2 && commonjsGlobal2.__importDefault || function(mod) {
+      return mod && mod.__esModule ? mod : { "default": mod };
+    };
+    Object.defineProperty(formatFuse_js, "__esModule", { value: true });
+    set_value_1 = __importDefault(setValue);
+    strind_1 = __importDefault(strind$1);
+    _default = formatFuse_js.default = formatFuseJs;
     Card = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       let { name, authors, publishers, date, type, link } = $$props;
       if ($$props.name === void 0 && $$bindings.name && name !== void 0)
@@ -19558,7 +19520,7 @@ var init_blog_cc0a12dd = __esm({
       {
         console.log(searchTerm);
       }
-      searchedList = (0, import_format_fuse.default)(fuse.search(searchTerm));
+      searchedList = _default(fuse.search(searchTerm));
       {
         console.log("NEW LIST:", searchedList);
       }
@@ -19577,7 +19539,7 @@ var init_blog_cc0a12dd = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/app-197470c9.js
+// .svelte-kit/output/server/chunks/app-81cd4c92.js
 function get_single_valued_header(headers, key) {
   const value = headers[key];
   if (Array.isArray(value)) {
@@ -19830,27 +19792,27 @@ function safeProp(key) {
   return /^[_$a-zA-Z][_$a-zA-Z0-9]*$/.test(key) ? "." + key : "[" + escapeUnsafeChars(JSON.stringify(key)) + "]";
 }
 function stringifyString(str) {
-  var result = '"';
+  var result2 = '"';
   for (var i = 0; i < str.length; i += 1) {
     var char = str.charAt(i);
     var code = char.charCodeAt(0);
     if (char === '"') {
-      result += '\\"';
+      result2 += '\\"';
     } else if (char in escaped$1) {
-      result += escaped$1[char];
+      result2 += escaped$1[char];
     } else if (code >= 55296 && code <= 57343) {
       var next = str.charCodeAt(i + 1);
       if (code <= 56319 && (next >= 56320 && next <= 57343)) {
-        result += char + str[++i];
+        result2 += char + str[++i];
       } else {
-        result += "\\u" + code.toString(16).toUpperCase();
+        result2 += "\\u" + code.toString(16).toUpperCase();
       }
     } else {
-      result += char;
+      result2 += char;
     }
   }
-  result += '"';
-  return result;
+  result2 += '"';
+  return result2;
 }
 function noop() {
 }
@@ -19860,7 +19822,7 @@ function safe_not_equal(a, b) {
 function writable(value, start = noop) {
   let stop;
   const subscribers = new Set();
-  function set(new_value) {
+  function set2(new_value) {
     if (safe_not_equal(value, new_value)) {
       value = new_value;
       if (stop) {
@@ -19879,13 +19841,13 @@ function writable(value, start = noop) {
     }
   }
   function update(fn) {
-    set(fn(value));
+    set2(fn(value));
   }
   function subscribe(run2, invalidate = noop) {
     const subscriber = [run2, invalidate];
     subscribers.add(subscriber);
     if (subscribers.size === 1) {
-      stop = start(set) || noop;
+      stop = start(set2) || noop;
     }
     run2(value);
     return () => {
@@ -19896,7 +19858,7 @@ function writable(value, start = noop) {
       }
     };
   }
-  return { set, update, subscribe };
+  return { set: set2, update, subscribe };
 }
 function hash(value) {
   let hash2 = 5381;
@@ -19917,24 +19879,24 @@ function escape_html_attr(str) {
   return '"' + escape$1(str, escape_html_attr_dict, (code) => `&#${code};`) + '"';
 }
 function escape$1(str, dict, unicode_encoder) {
-  let result = "";
+  let result2 = "";
   for (let i = 0; i < str.length; i += 1) {
     const char = str.charAt(i);
     const code = char.charCodeAt(0);
     if (char in dict) {
-      result += dict[char];
+      result2 += dict[char];
     } else if (code >= 55296 && code <= 57343) {
       const next = str.charCodeAt(i + 1);
       if (code <= 56319 && next >= 56320 && next <= 57343) {
-        result += char + str[++i];
+        result2 += char + str[++i];
       } else {
-        result += unicode_encoder(code);
+        result2 += unicode_encoder(code);
       }
     } else {
-      result += char;
+      result2 += char;
     }
   }
-  return result;
+  return result2;
 }
 async function render_response({
   branch,
@@ -20801,7 +20763,7 @@ function validate_component(component, name) {
   return component;
 }
 function create_ssr_component(fn) {
-  function $$render(result, props, bindings, slots, context) {
+  function $$render(result2, props, bindings, slots, context) {
     const parent_component = current_component;
     const $$ = {
       on_destroy,
@@ -20812,23 +20774,23 @@ function create_ssr_component(fn) {
       callbacks: blank_object()
     };
     set_current_component({ $$ });
-    const html = fn(result, props, bindings, slots);
+    const html = fn(result2, props, bindings, slots);
     set_current_component(parent_component);
     return html;
   }
   return {
     render: (props = {}, { $$slots = {}, context = new Map() } = {}) => {
       on_destroy = [];
-      const result = { title: "", head: "", css: new Set() };
-      const html = $$render(result, props, {}, $$slots, context);
+      const result2 = { title: "", head: "", css: new Set() };
+      const html = $$render(result2, props, {}, $$slots, context);
       run_all(on_destroy);
       return {
         html,
         css: {
-          code: Array.from(result.css).map((css2) => css2.code).join("\n"),
+          code: Array.from(result2.css).map((css2) => css2.code).join("\n"),
           map: null
         },
-        head: result.title + result.head
+        head: result2.title + result2.head
       };
     },
     $$render
@@ -20917,8 +20879,8 @@ function render(request, {
   return respond({ ...request, host }, options, { prerender });
 }
 var cookie, __accessCheck, __privateGet, __privateAdd, __privateSet, _map, chars, unsafeChars, reserved, escaped$1, objectProtoOwnPropertyNames, subscriber_queue, escape_json_string_in_html_dict, escape_html_attr_dict, s$1, s, absolute, ReadOnlyFormData, current_component, escaped, missing_component, on_destroy, css, Root, base2, assets, user_hooks, template, options, default_settings, d, empty, manifest, get_hooks, module_lookup, metadata_lookup;
-var init_app_197470c9 = __esm({
-  ".svelte-kit/output/server/chunks/app-197470c9.js"() {
+var init_app_81cd4c92 = __esm({
+  ".svelte-kit/output/server/chunks/app-81cd4c92.js"() {
     init_shims();
     cookie = __toModule(require_cookie());
     __accessCheck = (obj, member, msg) => {
@@ -21128,10 +21090,10 @@ ${``}`;
       externalFetch: hooks.externalFetch || fetch
     });
     module_lookup = {
-      "src/routes/__layout.svelte": () => Promise.resolve().then(() => (init_layout_7e01c435(), layout_7e01c435_exports)),
-      "src/routes/__error.svelte": () => Promise.resolve().then(() => (init_error_3913cfe3(), error_3913cfe3_exports)),
-      "src/routes/index.svelte": () => Promise.resolve().then(() => (init_index_a640aae3(), index_a640aae3_exports)),
-      "src/routes/blog.svelte": () => Promise.resolve().then(() => (init_blog_cc0a12dd(), blog_cc0a12dd_exports))
+      "src/routes/__layout.svelte": () => Promise.resolve().then(() => (init_layout_b90a2adb(), layout_b90a2adb_exports)),
+      "src/routes/__error.svelte": () => Promise.resolve().then(() => (init_error_1385c46c(), error_1385c46c_exports)),
+      "src/routes/index.svelte": () => Promise.resolve().then(() => (init_index_4dc85bdb(), index_4dc85bdb_exports)),
+      "src/routes/blog.svelte": () => Promise.resolve().then(() => (init_blog_708283b6(), blog_708283b6_exports))
     };
     metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-f043fd1d.js", "css": ["assets/pages/__layout.svelte-6b2f5d3c.css"], "js": ["pages/__layout.svelte-f043fd1d.js", "chunks/vendor-1c98e051.js"], "styles": [] }, "src/routes/__error.svelte": { "entry": "pages/__error.svelte-722150b0.js", "css": [], "js": ["pages/__error.svelte-722150b0.js", "chunks/vendor-1c98e051.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-b0ff34e2.js", "css": [], "js": ["pages/index.svelte-b0ff34e2.js", "chunks/vendor-1c98e051.js"], "styles": [] }, "src/routes/blog.svelte": { "entry": "pages/blog.svelte-9eb06f0b.js", "css": [], "js": ["pages/blog.svelte-9eb06f0b.js", "chunks/vendor-1c98e051.js"], "styles": [] } };
   }
@@ -21145,7 +21107,7 @@ init_shims();
 
 // .svelte-kit/output/server/app.js
 init_shims();
-init_app_197470c9();
+init_app_81cd4c92();
 var import_cookie5 = __toModule(require_cookie());
 
 // .svelte-kit/netlify/entry.js
