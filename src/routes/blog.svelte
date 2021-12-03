@@ -25,32 +25,21 @@
 	import { groups } from 'd3-array';
 	import format from 'date-fns/format';
 	import Fuse from 'fuse.js';
-	// import format from 'format-fuse.js'
+	import clean from 'format-fuse.js';
 
 	import Card from '../components/Card.svelte';
-	// import Tag from '../components/Tag.svelte';
 	import Magnify from '../lib/svgs/magnify.svelte';
 
 	export let posts;
-	// export let tags;
-
-	let initialPosts = posts.map(
-		(post) =>
-			new Object({
-				item: {
-					...post
-				}
-			})
-	);
 
 	let searching = false;
 	let searchTerm = '';
 	$: console.log(searchTerm);
 
 	const fuse = new Fuse(posts, {
-		keys: ['name', { name: 'authors', weight: 2 }],
+		keys: ['name', { name: 'authors', weight: 2 }, { name: 'publishers', weight: 3 }],
 		includeScore: true, // default: false
-		threshold: 0.35, // default: 0.6
+		threshold: 0.2, // default: 0.6
 		includeMatches: true, // default: false
 		ignoreLocation: true // default: false
 		// isCaseSensitive: false,
@@ -63,28 +52,12 @@
 		// ignoreFieldNorm: false,
 	});
 
-	$: searchedList = fuse.search(searchTerm);
+	$: searchedList = clean(fuse.search(searchTerm));
 	$: console.log('NEW LIST:', searchedList);
-	$: console.log(
-		'\nMATCHES: ',
-		searchedList.map(({ matches }) => matches.map(({ value }) => value))
-	);
 	$: groupedPosts =
 		searchTerm.length === 0
-			? groups(initialPosts, ({ item }) => format(new Date(item.added), `MMMM yyyy`))
-			: groups(searchedList, ({ item }) => format(new Date(item.added), `MMMM yyyy`));
-
-	let selectedTags = new Set();
-
-	function addStatus({ detail }) {
-		if (selectedTags.has(detail)) {
-			selectedTags.delete(detail);
-		} else {
-			selectedTags.add(detail);
-		}
-		filteredPosts = Array.from(posts).filter((post) => !selectedTags.has(post.type));
-		console.log(selectedTags);
-	}
+			? groups(posts, ({ added }) => format(new Date(added), `MMMM yyyy`))
+			: groups(searchedList, ({ added }) => format(new Date(added), `MMMM yyyy`));
 </script>
 
 <div class="sm:mt-6 sm:mb-1 sm:flex content-center sticky top-0 py-2 z-20">
@@ -104,12 +77,6 @@
 			placeholder="search..."
 			autofocus
 		/>
-	{:else}
-		<!-- <ul class="gap-x-1 gap-y-2 sm:flex">
-			{#each Array.from(tags) as tag}
-				<Tag on:status={addStatus} {tag} />
-			{/each}
-		</ul> -->
 	{/if}
 </div>
 
@@ -131,8 +98,8 @@
 				{section[0]}
 			</li>
 			<div class="flex-grow sm:pl-3 sm:pr-5">
-				{#each section[1] as { item: { name, authors, publishers, date, type, link }, matches } (name)}
-					<Card {name} {authors} {publishers} {date} {type} {link} {searchTerm} />
+				{#each section[1] as post (post.id)}
+					<Card {...post} />
 				{/each}
 			</div>
 		</div>

@@ -1,14 +1,11 @@
 <script>
-	import title from 'title';
 	import { cubicOut } from 'svelte/easing';
 	import { slide } from 'svelte/transition';
 	// import Heart from '../lib/svgs/heart.svelte';
 	// import * as api from '$lib/api';
 
 	export let name, authors, publishers, date, type, link;
-	export let searchTerm;
 
-	$: console.log(name.split(searchTerm));
 	let open = false;
 
 	// 	async function updateLikes(page_id) {
@@ -24,29 +21,57 @@
 	>
 		<div>
 			<p class="font-semibold">
-				{name.split(title(searchTerm))[0]}
-				<mark>{title(searchTerm)}</mark>
-				{name.split(title(searchTerm))[1]}
+				{#if typeof name[0] === 'object'}
+					{#each name as { matches, text }}
+						{#if matches && text.length > 3}
+							<mark>{text}</mark>
+						{:else}
+							{text}
+						{/if}
+					{/each}
+				{:else}
+					{name}
+				{/if}
 			</p>
 			{#if authors}
 				<p>
-					{#each authors as author, index}
-						{author}
-						{#if authors.length - 1 != index}
-							&bullet;&nbsp;
-						{/if}
-					{/each}
-					{#if publishers}
-						<span class="hidden sm:inline-block italic">
-							,&nbsp;
-							{#each publishers as publisher, index}
-								{publisher}
-								{#if publishers.length - 1 != index}
-									&bullet;&nbsp;
+					{#if typeof authors[0] === 'object'}
+						{#each authors as { matches, text }}
+							{#if matches && text.length > 3}
+								<mark>{text}</mark>
+							{:else}
+								{text}
+							{/if}
+						{/each}
+					{:else}
+						{#each authors as author, index}
+							{#if authors.length - 1 != index}
+								{author},&nbsp;
+							{:else}
+								{author}
+							{/if}
+						{/each}
+					{/if}
+					-
+					<i>
+						{#if typeof publishers[0] === 'object'}
+							{#each publishers as { matches, text }}
+								{#if matches && text.length > 2}
+									<mark>{text}</mark>
+								{:else}
+									{text}
 								{/if}
 							{/each}
-						</span>
-					{/if}
+						{:else}
+							{#each publishers as publisher, index}
+								{#if publishers.length - 1 != index}
+									{publisher},&nbsp;
+								{:else}
+									{publisher}
+								{/if}
+							{/each}
+						{/if}
+					</i>
 				</p>
 			{/if}
 		</div>
@@ -99,7 +124,5 @@
 				{/if}
 			</button>
 		</div>
-	{:else}
-		<span />
 	{/if}
 </div>
