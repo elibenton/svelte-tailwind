@@ -23,7 +23,7 @@
 
 <script>
 	import { groups } from 'd3-array';
-	import format from 'date-fns/format';
+	import { format } from 'date-fns';
 	import Fuse from 'fuse.js';
 	import clean from 'format-fuse.js';
 
