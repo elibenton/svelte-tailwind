@@ -23,8 +23,9 @@
 
 <script>
 	import { groups } from 'd3-array';
-	import { format } from 'date-fns';
+	import format from 'date-fns/format';
 	import Fuse from 'fuse.js';
+	// import format from 'format-fuse.js'
 
 	import Card from '../components/Card.svelte';
 	// import Tag from '../components/Tag.svelte';
@@ -64,10 +65,10 @@
 
 	$: searchedList = fuse.search(searchTerm);
 	$: console.log('NEW LIST:', searchedList);
-	// $: console.log(
-	// 	'\nMATCHES: ',
-	// 	searchedList.map(({ matches }) => matches.map(({ value }) => value))
-	// );
+	$: console.log(
+		'\nMATCHES: ',
+		searchedList.map(({ matches }) => matches.map(({ value }) => value))
+	);
 	$: groupedPosts =
 		searchTerm.length === 0
 			? groups(initialPosts, ({ item }) => format(new Date(item.added), `MMMM yyyy`))
@@ -86,7 +87,7 @@
 	}
 </script>
 
-<div class="sm:mt-6 sm:flex content-center sticky top-0 py-2 z-20">
+<div class="sm:mt-6 sm:mb-1 sm:flex content-center sticky top-0 py-2 z-20">
 	<button
 		class="dark:bg-gray-900 bg-beige px-2 -mx-2 py-3 -my-2"
 		on:click={() => (searching = !searching)}
@@ -130,8 +131,8 @@
 				{section[0]}
 			</li>
 			<div class="flex-grow sm:pl-3 sm:pr-5">
-				{#each section[1] as { item } (item.name)}
-					<Card {...item} {searchTerm} />
+				{#each section[1] as { item: { name, authors, publishers, date, type, link }, matches } (name)}
+					<Card {name} {authors} {publishers} {date} {type} {link} {searchTerm} />
 				{/each}
 			</div>
 		</div>

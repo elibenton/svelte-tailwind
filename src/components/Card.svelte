@@ -1,16 +1,15 @@
 <script>
+	import title from 'title';
+	import { cubicOut } from 'svelte/easing';
+	import { slide } from 'svelte/transition';
+	// import Heart from '../lib/svgs/heart.svelte';
 	// import * as api from '$lib/api';
 
-	import { cubicOut } from 'svelte/easing';
-	import { slide, fade } from 'svelte/transition';
-
-	// import Heart from '../lib/svgs/heart.svelte';
-
 	export let name, authors, publishers, date, type, link;
-	// export let likes, summary;
-	// export let searchTerm;
+	export let searchTerm;
+
+	$: console.log(name.split(searchTerm));
 	let open = false;
-	// let liked = false;
 
 	// 	async function updateLikes(page_id) {
 	// 		api.patch(`pages/${page_id}`, { properties: { Likes: { number: likes + 1 } } });
@@ -24,7 +23,11 @@
 		class="sm:flex sm:flex-row justify-between cursor-pointer mt-1 mb-2 mx-1.5 sm:border-b border-transparent group-hover:border-black dark:group-hover:border-white"
 	>
 		<div>
-			<p class="font-semibold">{name}</p>
+			<p class="font-semibold">
+				{name.split(title(searchTerm))[0]}
+				<mark>{title(searchTerm)}</mark>
+				{name.split(title(searchTerm))[1]}
+			</p>
 			{#if authors}
 				<p>
 					{#each authors as author, index}
