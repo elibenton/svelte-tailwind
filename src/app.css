@@ -3,6 +3,14 @@
 @tailwind base;
 @tailwind components;
 
+.clickable {
+	@apply hover:bg-beige;
+}
+
+.dark-mode {
+	@apply bg-warmGray-100 text-warmGray-900 dark:bg-gray-900 dark:text-gray-100;
+}
+
 .no-apple-style {
 	/* border: none; */
 	/* border-style: none; */

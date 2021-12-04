@@ -8,10 +8,10 @@ const config = {
 		adapter: process.env.VERCEL ? vercel() : netlify(),
 		target: '#svelte',
 		vite: {
-			optimizeDeps: { include: ['format-fuse.js'] },
-			ssr: {
-				noExternal: ['format-fuse.js']
-			},
+			// optimizeDeps: { include: ['format-fuse.js'] },
+			// ssr: {
+			// 	noExternal: ['format-fuse.js']
+			// },
 
 			plugins: [
 				Icons({
