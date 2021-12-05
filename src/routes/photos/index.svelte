@@ -11,7 +11,7 @@
 	import image_10 from '$images/image_10.jpg?width=700;2400&quality=60&webp&meta';
 	import image_11 from '$images/image_11.jpg?width=700;2400&quality=60&webp&meta';
 	import image_12 from '$images/image_12.jpg?width=700;2400&quality=60&webp&meta';
-	import image_13 from '$images/image_13.jpg?width=700;2400&quality=60&webp&meta&rotate=270';
+	import image_13 from '$images/image_13.jpg?width=700;2400&quality=60&webp&meta';
 	import image_14 from '$images/image_14.jpg?width=700;2400&quality=60&webp&meta';
 	import image_15 from '$images/image_15.jpg?width=700;2400&quality=60&webp&meta';
 	import image_16 from '$images/image_16.jpg?width=700;2400&quality=60&webp&meta';
@@ -22,11 +22,49 @@
 	import image_21 from '$images/image_21.jpg?width=700;2400&quality=60&webp&meta';
 	import image_22 from '$images/image_22.jpg?width=700;2400&quality=60&webp&meta';
 	import image_23 from '$images/image_23.jpg?width=700;2400&quality=60&webp&meta';
-	import image_24 from '$images/image_24.jpg?width=700;2400&quality=60&webp&meta';
+	import image_24 from '$images/image_24.jpg?width=700;2400&quality=60&webp&meta&rotate=270';
 	import image_25 from '$images/image_25.jpg?width=700;2400&quality=60&webp&meta';
 	import image_26 from '$images/image_26.jpg?width=700;2400&quality=60&webp&meta';
 	import image_27 from '$images/image_27.jpg?width=700;2400&quality=60&webp&meta';
 	import image_28 from '$images/image_28.jpg?width=700;2400&quality=60&webp&meta';
+	import image_29 from '$images/image_29.jpg?width=700;2400&quality=60&webp&meta';
+	import image_30 from '$images/image_30.jpg?width=700;2400&quality=60&webp&meta';
+	import image_31 from '$images/image_31.jpg?width=700;2400&quality=60&webp&meta';
+	import image_32 from '$images/image_32.jpg?width=700;2400&quality=60&webp&meta';
+	import image_33 from '$images/image_33.jpg?width=700;2400&quality=60&webp&meta';
+	import image_34 from '$images/image_34.jpg?width=700;2400&quality=60&webp&meta';
+	import image_35 from '$images/image_35.jpg?width=700;2400&quality=60&webp&meta';
+	import image_36 from '$images/image_36.jpg?width=700;2400&quality=60&webp&meta';
+	import image_37 from '$images/image_37.jpg?width=700;2400&quality=60&webp&meta';
+	import image_38 from '$images/image_38.jpg?width=700;2400&quality=60&webp&meta';
+	import image_39 from '$images/image_39.jpg?width=700;2400&quality=60&webp&meta';
+	import image_40 from '$images/image_40.jpg?width=700;2400&quality=60&webp&meta';
+	import image_41 from '$images/image_41.jpg?width=700;2400&quality=60&webp&meta';
+	import image_42 from '$images/image_42.jpg?width=700;2400&quality=60&webp&meta';
+	import image_43 from '$images/image_43.jpg?width=700;2400&quality=60&webp&meta&rotate=270';
+	import image_44 from '$images/image_44.jpg?width=700;2400&quality=60&webp&meta';
+	import image_45 from '$images/image_45.jpg?width=700;2400&quality=60&webp&meta';
+	import image_46 from '$images/image_46.jpg?width=700;2400&quality=60&webp&meta';
+	import image_47 from '$images/image_47.jpg?width=700;2400&quality=60&webp&meta';
+	import image_48 from '$images/image_48.jpg?width=700;2400&quality=60&webp&meta';
+	import image_49 from '$images/image_49.jpg?width=700;2400&quality=60&webp&meta';
+	import image_50 from '$images/image_50.jpg?width=700;2400&quality=60&webp&meta';
+	import image_51 from '$images/image_51.jpg?width=700;2400&quality=60&webp&meta';
+	import image_52 from '$images/image_52.jpg?width=700;2400&quality=60&webp&meta';
+	import image_53 from '$images/image_53.jpg?width=700;2400&quality=60&webp&meta';
+	import image_54 from '$images/image_54.jpg?width=700;2400&quality=60&webp&meta';
+	import image_55 from '$images/image_55.jpg?width=700;2400&quality=60&webp&meta';
+	import image_56 from '$images/image_56.jpg?width=700;2400&quality=60&webp&meta';
+	import image_57 from '$images/image_57.jpg?width=700;2400&quality=60&webp&meta';
+	import image_58 from '$images/image_58.jpg?width=700;2400&quality=60&webp&meta';
+	import image_59 from '$images/image_59.jpg?width=700;2400&quality=60&webp&meta';
+	import image_60 from '$images/image_60.jpg?width=700;2400&quality=60&webp&meta';
+	import image_61 from '$images/image_61.jpg?width=700;2400&quality=60&webp&meta';
+	import image_62 from '$images/image_62.jpg?width=700;2400&quality=60&webp&meta';
+	import image_63 from '$images/image_63.jpg?width=700;2400&quality=60&webp&meta';
+	import image_64 from '$images/image_64.jpg?width=700;2400&quality=60&webp&meta';
+	import image_65 from '$images/image_65.jpg?width=700;2400&quality=60&webp&meta';
+	import image_66 from '$images/image_66.jpg?width=700;2400&quality=60&webp&meta';
 
 	let images = [
 		{ name: 'Image 1', image_small: image_01[0], image_large: image_01[1] },
@@ -56,7 +94,45 @@
 		{ name: 'Image 25', image_small: image_25[0], image_large: image_25[1] },
 		{ name: 'Image 26', image_small: image_26[0], image_large: image_26[1] },
 		{ name: 'Image 27', image_small: image_27[0], image_large: image_27[1] },
-		{ name: 'Image 28', image_small: image_28[0], image_large: image_28[1] }
+		{ name: 'Image 28', image_small: image_28[0], image_large: image_28[1] },
+		{ name: 'Image 29', image_small: image_29[0], image_large: image_29[1] },
+		{ name: 'Image 30', image_small: image_30[0], image_large: image_30[1] },
+		{ name: 'Image 31', image_small: image_31[0], image_large: image_31[1] },
+		{ name: 'Image 32', image_small: image_32[0], image_large: image_32[1] },
+		{ name: 'Image 33', image_small: image_33[0], image_large: image_33[1] },
+		{ name: 'Image 34', image_small: image_34[0], image_large: image_34[1] },
+		{ name: 'Image 35', image_small: image_35[0], image_large: image_35[1] },
+		{ name: 'Image 36', image_small: image_36[0], image_large: image_36[1] },
+		{ name: 'Image 37', image_small: image_37[0], image_large: image_37[1] },
+		{ name: 'Image 38', image_small: image_38[0], image_large: image_38[1] },
+		{ name: 'Image 39', image_small: image_39[0], image_large: image_39[1] },
+		{ name: 'Image 40', image_small: image_40[0], image_large: image_40[1] },
+		{ name: 'Image 41', image_small: image_41[0], image_large: image_41[1] },
+		{ name: 'Image 42', image_small: image_42[0], image_large: image_42[1] },
+		{ name: 'Image 43', image_small: image_43[0], image_large: image_43[1] },
+		{ name: 'Image 44', image_small: image_44[0], image_large: image_44[1] },
+		{ name: 'Image 45', image_small: image_45[0], image_large: image_45[1] },
+		{ name: 'Image 46', image_small: image_46[0], image_large: image_46[1] },
+		{ name: 'Image 47', image_small: image_47[0], image_large: image_47[1] },
+		{ name: 'Image 48', image_small: image_48[0], image_large: image_48[1] },
+		{ name: 'Image 49', image_small: image_49[0], image_large: image_49[1] },
+		{ name: 'Image 50', image_small: image_50[0], image_large: image_50[1] },
+		{ name: 'Image 51', image_small: image_51[0], image_large: image_51[1] },
+		{ name: 'Image 52', image_small: image_52[0], image_large: image_52[1] },
+		{ name: 'Image 53', image_small: image_53[0], image_large: image_53[1] },
+		{ name: 'Image 54', image_small: image_54[0], image_large: image_54[1] },
+		{ name: 'Image 55', image_small: image_55[0], image_large: image_55[1] },
+		{ name: 'Image 56', image_small: image_56[0], image_large: image_56[1] },
+		{ name: 'Image 57', image_small: image_57[0], image_large: image_57[1] },
+		{ name: 'Image 58', image_small: image_58[0], image_large: image_58[1] },
+		{ name: 'Image 59', image_small: image_59[0], image_large: image_59[1] },
+		{ name: 'Image 60', image_small: image_60[0], image_large: image_60[1] },
+		{ name: 'Image 61', image_small: image_61[0], image_large: image_61[1] },
+		{ name: 'Image 62', image_small: image_62[0], image_large: image_62[1] },
+		{ name: 'Image 63', image_small: image_63[0], image_large: image_63[1] },
+		{ name: 'Image 64', image_small: image_64[0], image_large: image_64[1] },
+		{ name: 'Image 65', image_small: image_65[0], image_large: image_65[1] },
+		{ name: 'Image 66', image_small: image_66[0], image_large: image_66[1] }
 	];
 
 	console.log(images);
@@ -126,14 +202,12 @@
 				{name}
 			</h1>
 			<img
-				class="object-cover align-bottom max-h-full min-w-full group-hover:opacity-70 transition duration-200"
+				class="object-cover align-bottom max-h-full min-w-full group-hover:opacity-70 transition duration-2004"
 				alt="alt"
 				loading="lazy"
 				decoding="async"
 				type="image/${format}"
 				{src}
-				{width}
-				{height}
 			/>
 		</button>
 	{/each}
