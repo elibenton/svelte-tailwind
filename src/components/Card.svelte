@@ -1,7 +1,7 @@
 <script>
 	import { cubicOut } from 'svelte/easing';
 	import { slide, fade } from 'svelte/transition';
-	import Link from '../lib/svgs/link.svelte';
+	import Link from '$lib/svgs/link.svelte';
 	// import * as api from '$lib/api';
 
 	export let name, authors, publishers, date, type, link;

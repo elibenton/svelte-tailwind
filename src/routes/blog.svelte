@@ -19,7 +19,7 @@
 			error: new Error(`Could not load ${url}`)
 		};
 	}
-	export const prerender = true;
+	export const prerender = true; // Does this work on this page type?
 </script>
 
 <script>
@@ -29,12 +29,15 @@
 	import format from 'format-fuse.js';
 
 	import Card from '../components/Card.svelte';
-	import Magnify from '../lib/svgs/magnify.svelte';
+	import Magnify from '$lib/svgs/magnify.svelte';
 
 	export let posts;
 
 	let searching = false;
 	let searchTerm = '';
+	$: if (searching === false) {
+		searchTerm = '';
+	}
 
 	const fuse = new Fuse(posts, {
 		keys: ['name', { name: 'authors', weight: 2 }, { name: 'publishers', weight: 3 }],

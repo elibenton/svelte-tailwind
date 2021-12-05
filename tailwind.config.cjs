@@ -5,8 +5,16 @@ const config = {
 	mode: 'jit',
 	purge: ['./src/**/*.{html,js,svelte,ts}'],
 	darkMode: 'media', // class
+	variants: {
+		extend: {
+			mixBlendMode: ['hover', 'group-hover']
+		}
+	},
 	theme: {
 		extend: {
+			height: {
+				'40vh': '40vh'
+			},
 			fontFamily: {
 				sans: ['Mier B', 'sans-serif']
 			},
