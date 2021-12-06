@@ -135,7 +135,7 @@
 		{ name: 'Image 66', image_small: image_66[0], image_large: image_66[1] }
 	];
 
-	console.log(images);
+	// console.log(images);
 
 	import { fade } from 'svelte/transition';
 	import Close from '$lib/svgs/close.svelte';
@@ -155,37 +155,32 @@
 </script>
 
 {#if expand}
+	<button class="fixed top-3 right-3 z-20" on:click={() => (expand = !expand)}>
+		<Close />
+	</button>
 	<div
 		transition:fade={{ duration: 200 }}
-		class="fixed flex z-10 w-full h-full px-4 pt-8 pb-24 bg-white items-middle"
+		class="fixed flex z-10 w-full h-full p-8 bg-white items-end space-x-4"
 	>
-		<button class="fixed top-3 right-3" on:click={() => (expand = !expand)}>
-			<Close />
-		</button>
-		<div class="w-11/12 flex align-bottom justify-center">
-			<img
-				class="object-contain object-bottom align-bottom"
-				alt="alt"
-				loading="lazy"
-				decoding="async"
-				src={overlay}
-				width={overlayWidth}
-				height={overlayHeight}
-			/>
-			<div class="w-1/5 mx-2 flex flex-col justify-end">
-				<h1>{overlayName.toUpperCase()}</h1>
-				<h2>LOCATION</h2>
-				<h2>DATE</h2>
-				<p>
-					I'm baby venmo unicorn lo-fi shaman bitters 8-bit plaid chambray try-hard hammock
-					chicharrones enamel pin deep v. Swag scenester messenger bag taxidermy ramps offal kale
-					chips activated charcoal portland vice actually meggings. Tbh jianbing air plant 8-bit
-					street art, literally locavore. Tattooed cray literally try-hard vegan viral pok pok.
-					Fixie tattooed post-ironic craft beer chicharrones. Messenger bag copper mug meditation
-					tacos church-key banh mi 3 wolf moon butcher brunch semiotics pour-over hoodie plaid
-					ennui.
-				</p>
-			</div>
+		<img
+			class="object-contain object-left-bottom w-11/12 max-w-min h-full"
+			alt="alt"
+			loading="lazy"
+			decoding="async"
+			src={overlay}
+			width={overlayWidth}
+			height={overlayHeight}
+		/>
+		<div class="w-48">
+			<h1>{overlayName.toUpperCase()}</h1>
+			<h2>LOCATION</h2>
+			<h2>DATE</h2>
+			<p>
+				I'm baby venmo unicorn lo-fi shaman bitters 8-bit plaid chambray try-hard hammock
+				chicharrones enamel pin deep v. Swag scenester messenger bag taxidermy ramps offal kale
+				chips activated charcoal portland vice actually meggings. Tbh jianbing air plant 8-bit
+				street art, literally locavore.
+			</p>
 		</div>
 	</div>
 {/if}
@@ -194,7 +189,7 @@
 	{#each images as { image_small: { src, width, height, format }, name }, index}
 		<button
 			on:click={() => handleClick(name, index)}
-			class="relative h-40vh flex-grow group bg-white p-0.5"
+			class="relative h-45vh flex-grow group bg-white p-0.5"
 		>
 			<h1
 				class="font-medium text-lg text-black text-opacity-50 absolute bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 group-hover:opacity-100 opacity-0 z-10"
