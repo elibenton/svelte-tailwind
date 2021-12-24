@@ -15,18 +15,27 @@ export async function get() {
 		result: { images }
 	} = await response.json();
 
+	console.log(await exifr.parse(images[0].variants[1]));
+
 	async function getEXIF(image) {
-		const output = await exifr.parse(image.variants[0], [
+		const output = await exifr.parse(image.variants[1], [
 			'FNumber',
 			'ISO',
 			'Make',
 			'Model',
 			'ShutterSpeedValue',
 			'FocalLengthIn35mmFormat',
-			'DateTimeOriginal'
+			'DateTimeOriginal',
+			'ExposureTime',
+			'userComment',
+			'ImageDescription',
+			'Artist'
 		]);
 
-		return { image, metadata: output };
+		return {
+			image: { filename: image.filename, variants: [image.variants[2], image.variants[0]] },
+			metadata: output
+		};
 	}
 
 	const imagesWithMeta = await Promise.all(images.map((image) => getEXIF(image)));

@@ -1,0 +1,26 @@
+
+/* making horizontal rules solid */
+hr {
+	border-bottom: 1px #000 solid;
+}
+
+.newsletter-colophon {
+	color: darkgrey;
+	font-family: monospace;
+}
+
+.newsletter-colophon .p {
+	line-height: 1em;
+	font-size: 12px;
+}
+
+.newsletter-header {
+	color: darkgrey;
+	border-bottom: 1px solid darkgrey;
+	font-family: monospace;
+}
+
+.newsletter-header .p {
+	line-height: 1em;
+	font-size: 12px;
+}

@@ -1,32 +1,31 @@
 import preprocess from 'svelte-preprocess';
 import netlify from '@sveltejs/adapter-netlify';
-import vercel from '@sveltejs/adapter-vercel';
-import cloudflare from '@sveltejs/adapter-cloudflare';
+// import vercel from '@sveltejs/adapter-vercel';
+// import cloudflare from '@sveltejs/adapter-cloudflare';
 import Icons from 'unplugin-icons/vite';
-import { imagetools } from 'vite-imagetools';
+// import { imagetools } from 'vite-imagetools';
 import path from 'path';
 import { mdsvex } from 'mdsvex';
-import { fileURLToPath } from 'url';
+// import { fileURLToPath } from 'url';
 
-const dirname = path.resolve(fileURLToPath(import.meta.url), '../');
+// const dirname = path.resolve(fileURLToPath(import.meta.url), '../');
 
 const config = {
 	extensions: ['.svelte', '.md'],
 	kit: {
-		adapter: cloudflare(),
+		adapter: netlify(),
 		target: '#svelte',
 		vite: {
-			optimizeDeps: { include: ['format-fuse.js'] },
-			ssr: {
-				noExternal: ['format-fuse.js']
-			},
-
+			// optimizeDeps: { include: ['format-fuse.js'] },
+			// ssr: {
+			// 	noExternal: ['format-fuse.js']
+			// },
 			plugins: [
 				Icons({
 					compiler: 'svelte',
 					autoInstall: true
-				}),
-				imagetools()
+				})
+				// imagetools()
 			],
 			resolve: {
 				alias: {

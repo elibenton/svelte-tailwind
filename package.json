@@ -36,6 +36,7 @@
 		"vite-imagetools": "^3.4.0-next.7"
 	},
 	"dependencies": {
+		"@netlify/functions": "^0.10.0",
 		"@notionhq/client": "^0.4.6",
 		"@sveltejs/adapter-cloudflare": "^1.0.0-next.2",
 		"cookie": "^0.4.1",
