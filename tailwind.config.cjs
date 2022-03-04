@@ -2,8 +2,7 @@ const plugin = require('tailwindcss/plugin');
 const colors = require('tailwindcss/colors');
 
 const config = {
-	mode: 'jit',
-	purge: ['./src/**/*.{html,js,svelte,ts}'],
+	content: ['./src/**/*.{html,js,svelte,ts}'],
 	darkMode: 'media', // class
 	variants: {
 		extend: {
@@ -19,10 +18,7 @@ const config = {
 				sans: ['Mier B', 'sans-serif']
 			},
 			colors: {
-				beige: { DEFAULT: '#fff8ef', light: '', dark: '' },
-				gray: colors.trueGray,
-				warmGray: colors.warmGray,
-				colorGray: colors.coolGray
+				beige: { DEFAULT: '#fff8ef', light: '', dark: '' }
 			},
 			animation: {
 				fadeIn: 'fadeIn 1s ease-in forwards'

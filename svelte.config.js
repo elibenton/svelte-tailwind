@@ -17,14 +17,14 @@ const config = {
 		target: '#svelte',
 		vite: {
 			optimizeDeps: { include: ['format-fuse.js'] },
-			ssr: {
-				noExternal: ['format-fuse.js']
-			},
+			// ssr: {
+			// 	noExternal: ['format-fuse.js']
+			// },
 			plugins: [
-				// Icons({
-				// 	compiler: 'svelte',
-				// 	autoInstall: true
-				// })
+				Icons({
+					compiler: 'svelte',
+					autoInstall: true
+				})
 				// imagetools()
 			],
 			resolve: {

@@ -2,6 +2,7 @@ import * as api from '$lib/api';
 
 import title from 'title';
 import { format, parse } from 'date-fns';
+import { groupBy } from 'underscore';
 
 export async function get() {
 	const reading = import.meta.env.VITE_NOTION_LIST_ID;
@@ -43,7 +44,8 @@ export async function get() {
 	return {
 		body: {
 			posts: responseClean,
-			tags: [...new Set(results.map(({ properties }) => properties.Type.select.name))]
+			tags: [...new Set(results.map(({ properties }) => properties.Type.select.name))],
+			tagCount: responseClean.groupBy((results) => results.Type)
 		}
 	};
 }

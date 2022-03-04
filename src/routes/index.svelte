@@ -4,9 +4,9 @@
 		I'm a freelance journalist and radio producer. I am currently an associate producer at
 		<a
 			rel="external"
-			href="https://www.wnycstudios.org/podcasts/otm"
-			class="text-blue-800 dark:text-blue-300 expand">On The Media</a
-		>. Before that I helped produce
+			href="https://www.wnycstudios.org/podcasts/radiolab"
+			class="text-blue-800 dark:text-blue-300 expand">Radiolab</a
+		>. Previously I helped produce
 		<a
 			rel="external"
 			href="https://www.wnycstudios.org/podcasts/radiolab/projects/mixtape"
@@ -14,8 +14,19 @@
 		> from Radiolab.
 	</p>
 </div>
-<ul class="flex flex-col sm:flex-row gap-x-3 text-sm">
+<h1>About</h1>
+<p>
+	I've been making working public radio for the past five years, first at my hometown station --
+	WBHM Birmingham -- and then at KQED in San Francisco and WNYC in New York. In between radio gigs,
+	I've lived off-grid on the banks of the Salton Sea, in Yangon, Myanmar and Bangalore, India.
+</p>
+
+<p>In addition to radio, I also enjoy photograhy and web development.</p>
+
+<!-- <ul class="flex flex-col sm:flex-row gap-x-3 text-sm">
+	<li><a sveltekit:prefetch href="/writing">WRITING</a></li>
+	<li><a sveltekit:prefetch href="/photos">PHOTOS</a></li>
+	<li><a sveltekit:prefetch href="/comment">COMMENT</a></li>
+	<li><a sveltekit:prefetch href="/">PROJECTS</a></li>
 	<li><a sveltekit:prefetch href="/about">ABOUT</a></li>
-	<li><a sveltekit:prefetch href="/blog">BLOG</a></li>
-	<li><a sveltekit:prefetch href="/contact">CONTACT</a></li>
-</ul>
+</ul> -->
