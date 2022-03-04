@@ -44,8 +44,8 @@ export async function get() {
 	return {
 		body: {
 			posts: responseClean,
-			tags: [...new Set(results.map(({ properties }) => properties.Type.select.name))],
-			tagCount: responseClean.groupBy((results) => results.Type)
+			tags: [...new Set(results.map(({ properties }) => properties.Type.select.name))]
+			// tagCount: responseClean.groupBy((results) => results.Type)
 		}
 	};
 }
